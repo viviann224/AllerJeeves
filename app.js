@@ -10,3 +10,5 @@ $('.button-collapse').sideNav({
 // START OPEN
 $('.button-collapse').sideNav('show');
 });
+
+$(".dropdown-content").dropdown({ hover: true, constrainWidth: false });
