@@ -1,8 +1,27 @@
 .checkbox
 {
 
+
 }
 
+.input-field input[type=text]{
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+  width:auto;
+  height: auto;
+}
+
+#input_text
+{
+  ;
+  border-bottom: 1px solid #616161;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+.input-field input[type=text]:focus {
+
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
 
 
 body {
