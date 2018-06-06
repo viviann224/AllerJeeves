@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Aller-Jeeves</title>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+      <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+     	<!--css sheet-->
+     	<link rel="stylesheet" type="text/css" href="style.css">
+      <!-- jQuery -->
+      <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!-- materialize -->
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script>
+   </head>
+
+   <body>
+    <nav>
+   <div class="nav-wrapper  blue-grey">
+     <div class="row">
+       <div class="col s4">
+         <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+     </div>
+     <!-- <div class="col s8 center"> -->
+     Aller-Jeeves
+
+     <div class="col s8">
+         <a class="btn-flat dropdown-button waves-effect waves-light white-text" href="#" data-activates="profile-dropdown">Aller-Jeeves<i class="mdi-navigation-arrow-drop-down right"></i></a>
+         <ul id="profile-dropdown" class="dropdown-content">
+             <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+             <li><a href="#"><i class="material-icons">settings</i>Setting</a></li>
+             <li><a href="#"><i class="material-icons">help</i>Help</a></li>
+             <li class="divider"></li>
+             <li><a href="#"><i class="material-icons">lock</i>Lock</a></li>
+             <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
+         </ul>
+     </div>
+   <!-- </div> -->
+     <ul class="side-nav blue-grey lighten-5" id="mobile-demo">
+
+
+       <li class="sidenav-header  blue-grey">
+         <div class="row">
+           <div class="col s4">
+               <i width="48px" height="48px" alt="" class="circle responsive-img valign profile-image material-icons">local_dining</i>
+           </div>
+           <div class="col s8 waves-effect waves-light white-text">
+             ALLER-JEEVES
+           </div>
+
+
+
+
+         </div>
+       </li>
+
+       <li class="white">
+         <ul class="collapsible collapsible-accordion">
+
+
+            <div class="row">
+
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <label for="textarea1">Ingredients</label>
+          </div>
+          <a class="waves-effect waves-light btn blue-grey lighten-2">SEARCH<i class="material-icons right">pageview</i></a>
+        </div>
+      </form>
+
+    </div>
+
+
+
+         </ul>
+       </li>
+
+
+
+
+
+       <li class="white">
+         <div class="row">
+         </div>
+         <ul class="collapsible collapsible-accordion">
+           <li>
+             <a class="collapsible-header waves-effect waves-blue">Allergy Restrictions<i class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
+             <div class="collapsible-body">
+               <ul>
+                 <form class="checkbox" action="#">
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="dairy" name="interest" value="396^Dairy-Free"/>
+                     <label for="dairy">Dairy-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="gluten" name="interest" value="393^Gluten-Free"/>
+                     <label for="gluten">Gluten-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="peanuts" name="interest" value="394^Peanut-Free"/>
+                     <label for="peanuts">Peanut-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="soy" name="interest" value="400^Soy-Free"/>
+                     <label for="soy">Soy-Free</label>
+                   </a></li>
+
+            
+
+							<div>
+								<input class="allergy" type="checkbox" id="egg" name="interest" value="397^Egg-Free">
+								<label for="egg">Egg-Free</label>
+							</div>
+							<div>
+								<input class="allergy" type="checkbox" id="sulfite" name="interest" value="401^Sulfite-Free">
+								<label for="sulfite">Sulfite-Free</label>
+							</div>
+							<div>
+								<input class="allergy" type="checkbox" id="treeNut" name="interest" value="395^Tree Nut-Free">
+								<label for="treeNut">Tree Nut-Free</label>
+							</div>
+
+
+                </form>
+
+                <div>
+								<input class="diet" type="checkbox" id="veggie" name="interest" value="387^Lacto-ovo vegetarian">
+								<label for="veggie">Vegetarian</label>
+							</div>
+							<div>
+								<input class="diet" type="checkbox" id="vegan" name="interest" value="386^Vegan">
+								<label for="vegan">Vegan</label>
+							</div>
+
+              <div>
+								<input class="diet" type="checkbox" id="pescetarian" name="interest" value="390^Pescetarian">
+								<label for="pescetarian">Pescetarian</label>
+							</div>
+							<div>
+								<input class="diet" type="checkbox" id="paleo" name="interest" value="403^Paleo">
+								<label for="paleo">Paleo</label>
+							</div>
+
+                 <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">fullscreen</i>Full Screen<span class="new badge right yellow grey lighten-1" data-badge-caption="updated"></span></a></li>
+                 <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">swap_horiz</i>Horizontal Menu<span class="new badge right yellow darken-3"></span></a></li>
+                 <li><div class="divider"></div></li>
+               </ul>
+             </div>
+           </li>
+         </ul>
+       </li>
+
+
+
+       <li class="white">
+         <ul class="collapsible collapsible-accordion">
+           <li>
+             <a class="collapsible-header waves-effect waves-blue center-align">Dietary Restrictions<i class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
+             <div class="collapsible-body">
+               <ul>
+                 <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">fullscreen</i>Full Screen<span class="new badge right yellow grey lighten-1" data-badge-caption="updated"></span></a></li>
+                 <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">swap_horiz</i>Horizontal Menu<span class="new badge right yellow darken-3"></span></a></li>
+                 <li><div class="divider"></div></li>
+               </ul>
+             </div>
+           </li>
+         </ul>
+         <div class="row">
+         </div>
+         <div class="row">
+         </div>
+       </li>
+
+
+
+
+
+
+       <li class="sidenav-footer blue-grey lighten-5">
+         <div class="row">
+           <li class="white"><a href="#" class="waves-effect waves-blue">ABOUT<i class="material-icons">mail</i></a></li>
+
+           <div class="social-icons">
+
+             <div class="col s1">
+               <a href="#">LI</a>
+             </div>
+             <div class="col s2">
+               <a href="#">FB</a>
+             </div>
+             <div class="col s2">
+               <a href="#">Twit</a>
+             </div>
+             <div class="col s3">
+               <a href="#">Google</a>
+             </div>
+             <div class="col s2">
+               <a href="#">Pin</a>
+             </div>
+             <div class="col s2">
+               <a href="#">YT</a>
+             </div>
+           </div>
+         </div>
+       </li>
+
+
+     </ul>
+
+   </div>
+ </nav>
+
+<!-- Gitter Chat Link -->
+<div class="fixed-action-btn"><a class="btn-floating btn-large  blue-grey" href="https://gitter.im/Dogfalo/materialize" target="_blank"><i class="large material-icons">chat</i></a></div>
+  <script src="app.js">
+
+  </script>
+   </body>
+</html>
