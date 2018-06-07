@@ -21,8 +21,8 @@ $("#inputBtn").on("click", function(event)
   //once search complete clear search for next search
   clearSearch();
   //calls myCards to get 12 recipes to Object
-  // var myCards= makeCards(myURL);
-  // console.log(myCards);
+   makeCards(myURL,recipeSource );
+  //console.log(myCard);
 
 });
 //code for specific recipe info
@@ -40,7 +40,7 @@ function getCards(ingr, allergy, diet, source, id, key)
   return myURL;
 }
 
-function makeCards(url)
+function makeCards(url, recipeSource)
 {
   //calling the ajax class to pass the url, and the
   //GET method to return the myObj object
@@ -50,10 +50,47 @@ function makeCards(url)
     //once myObj object returns, pass in myObj to the next function
   }).then(function(myObj) {
 
-    var newObj = myObj.matches;
+    let newObj = myObj.matches;
+        //console.log(newObj);
 
+    // set the count value to the count property in the object
+    let count = newObj.length;
 
-    //return myObj.matches;
+    let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[];
+
+    // initiate a for loop to store recipe_id property and image_url property into their arrays
+    //change to count later..
+        for (var i = 0; i < count; i++) {
+          recipeArray.push(recipeSource + newObj[i].id);
+          idArray.push(newObj[i].id);
+          imageArray.push(newObj[i].imageUrlsBySize[90]);
+          ingredArray.push(newObj[i].ingredients);
+          titleArray.push(newObj[i].recipeName);
+        }
+
+        // create a for-loop to pull, resize, and reassign photos back into the imageArray followed by another interation to replace all http with https...so they all match through out page.
+        for (var j = 0; j < imageArray.length; j++) {
+          imageArray[j] = imageArray[j].toString().replace("s90", "s500");
+          imageArray[j] = imageArray[j].toString().replace("http://", "https://");
+        }
+        // console.log(recipeArray);
+        // console.log(idArray);
+        // console.log(imageArray);
+        // console.log(ingredArray);
+        // console.log(titleArray);
+
+        var Cards =
+        {
+          url:recipeArray,
+          id: idArray,
+          img: imageArray,
+          ingList: ingredArray,
+          title: titleArray,
+
+        };
+
+        console.log(Cards);
+    //return Cards;
   });
 }
 
