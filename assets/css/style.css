@@ -1,8 +1,19 @@
-.checkbox
-{
-
-
+.card {
+	text-align: center;
+	display: inline-block;
+	float: left;
+	margin: 10px 15px;
+	position: relative;
+	width: 300px;
+	height: 370px;
+	transform-style: preserve-3d;
+	transition: all 1s ease;
+	/*border-radius: 6px;
+	border: 2.0px solid #C3D2A2;*/
+	/*box-shadow:  0 4px 12px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
 }
+
+
 
 .input-field input[type=text]{
   border-bottom: 1px solid #000;

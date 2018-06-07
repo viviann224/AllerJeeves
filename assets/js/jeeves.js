@@ -89,18 +89,23 @@ function makeCards(url, recipeSource)
 
         };
 
-        console.log(Cards);
+        //console.log(Cards);
+
+        if(Cards.url.length>0)
+        { createCards(Cards);}
     //return Cards;
   });
 }
+function createCards(Cards)
+{
+  console.log(Cards);
 
-
+}
 
 function getIngre()
 {
   //ingredient input is default to tofu unless user updates.
   var ingr="Tofu";
-
   if($("#input_text").val().trim().length>0)
   { ingr= $("#input_text").val().trim();}
   return ingr;
@@ -113,10 +118,10 @@ function getDiet()
   var dietRequest="";
   //this is to create the filter for the specific diet
   $("input[class=diet]:checked").each(function() {
-    //once the user clicks on the submit button, go ahead and check what
-    //input has been clicked and concat each diet together
-    var restrict = $(this).val().trim();
-    dietRequest += (dietString + restrict);
+  //once the user clicks on the submit button, go ahead and check what
+  //input has been clicked and concat each diet together
+  var restrict = $(this).val().trim();
+  dietRequest += (dietString + restrict);
   });
   return dietRequest;
 }
@@ -128,10 +133,10 @@ function getAllergy()
   var allergyRequest="";
   //this is to create the filter for the specific allergy
   $("input[class=allergy]:checked").each(function() {
-    //once the user clicks on the submit button, go ahead and check what
-    //input has been clicked and concat each allergy together
-    var restrict = $(this).val().trim();
-    allergyRequest += (restrictString + restrict);
+  //once the user clicks on the submit button, go ahead and check what
+  //input has been clicked and concat each allergy together
+  var restrict = $(this).val().trim();
+  allergyRequest += (restrictString + restrict);
   });
   return allergyRequest;
 }
