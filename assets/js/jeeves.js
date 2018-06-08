@@ -106,18 +106,29 @@ console.log(Cards);
   for( let i=0;i<5;i++)
   {
     let cardBody=$('<div class="card sticky-action">');
-    cardBody.append('<div class="card-image waves-effect waves-block waves-light" id="img'+i+'">');
+
     let cardImg=$('<img class="activator" src="'+ Cards.img[i]+'" ></div>');
-    $('.card-image').append(cardImg);
+
+
+    let titleBack=$('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
+
+    let backInfo= $('<p>'+Cards.ingList[i]+'</p>' );
+
+    let cardUrl=$('<p><a href="'+Cards.url[i]+'">URL</a></p>');
+
+    let cardImgHolder=$('<div class="card-image waves-effect waves-block waves-light" id="img'+i+'">');
+    cardBody.append(cardImgHolder);
+    cardImgHolder.append(cardImg);
     cardBody.append('<div class="card-content"><span class="card-title activator grey-text text-darken-4 flow-text">'+ Cards.title[i]+'<i class="material-icons right">more_vert</i></span></div>');
     //var title
-    cardBody.append('<div class="card-reveal">');
-    let titleBack=$('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
-    $(".card-reveal").prepend(titleBack);
-    let backInfo= $('<p>'+Cards.ingList[i]+'</p>' );
-    $(".card-reveal").append(backInfo);
-    let cardUrl=$('<p><a href="'+Cards.url[i]+'">URL</a></p>');
-    $(".card-reveal").append(cardUrl);
+    let cardBackHolder=$('<div class="card-reveal">');
+    cardBody.append(cardBackHolder);
+    cardBackHolder.prepend(titleBack);
+    cardBackHolder.append(backInfo);
+    cardBackHolder.append(cardUrl);
+
+
+
     $(".outputArea").append(cardBody);
 
     cardBody="", cardImg="", titleBack="", backInfo="", cardUrl="";
