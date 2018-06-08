@@ -243,7 +243,45 @@
  <div class="outputArea">
  </div>
 
-<!-- Gitter Chat Link -->
+ <!-- signin / signup modal-->
+ <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+              <br>
+              <input id="icon_prefix" type="text" class="validate">
+
+              <label for="icon_prefix">User Name</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">vpn_key</i>
+                <br>
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <h5>New?</h5>
+        <br>Click <a href="#">HERE</a> to become a memeber.
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn blue-grey lighten-2">CLOSE</a>
+    </div>
+  </div>
+
+<!-- go to top button -->
 <div class="fixed-action-btn"><a class="btn-floating btn-large  blue-grey hoverable" href="https://gitter.im/Dogfalo/materialize" target="_blank"><i class="large material-icons">TOP</i></a></div>
   <script src="assets/js/nav.js"></script>
   <script src="assets/js/jeeves.js"></script>

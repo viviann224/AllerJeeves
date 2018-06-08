@@ -18,14 +18,14 @@ $(document).ready(function()
   $(".dropdown-content").dropdown({ hover: true, constrainWidth: false });
 
   //top button
-  // 
-  // $(".fixed-action-btn").onclick
-  // {
-  //   top: 0px;
-  // }
-
   $(".fixed-action-btn").click(function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
-});
+  });
+  //login / logout modal
+  $(document).ready(function(){
+   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+   $('.modal-trigger').leanModal();
+ });
+
 });
