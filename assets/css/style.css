@@ -1,3 +1,15 @@
+
+.outputArea
+{
+
+	margin: auto;
+}
+
+.btn
+{
+	padding: 0 1rem !important;
+}
+
 .card {
 	text-align: center;
 	display: inline-block;

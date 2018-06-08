@@ -36,12 +36,14 @@ function clearSearch()
 function getCards(ingr, allergy, diet, source, id, key)
 {
   var userInput= ingr+allergy+diet;
-  var myURL = source+"?_app_id="+ id+"&_app_key="+ key+"&q=" + userInput +"&maxResult=12";
+  var myURL = source+"?_app_id="+ id+"&_app_key="+ key+"&q=" + userInput +"&maxResult=15";
   return myURL;
 }
 
 function makeCards(url, recipeSource)
 {
+  //clears out the cards before making a new request.
+    $(".outputArea").empty();
   //calling the ajax class to pass the url, and the
   //GET method to return the myObj object
   $.ajax({
@@ -55,6 +57,9 @@ function makeCards(url, recipeSource)
 
     // set the count value to the count property in the object
     let count = newObj.length;
+
+    if(count>0)
+    {
 
     let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[];
 
@@ -95,6 +100,12 @@ function makeCards(url, recipeSource)
 
         if(Cards.url.length>0)
         { createCards(Cards);}
+      }
+      else
+      {
+        //appends the card to html
+        $(".outputArea").append("I am sorry please search again");
+      }
     //return Cards;
   });
 }
@@ -102,10 +113,10 @@ function createCards(Cards)
 {
   // initiate another for loop to create dynamic elements to display properties for each recipe card
   //Cards.id.length
-  for( let i=0;i<5;i++)
+  for( let i=0;i<15;i++)
   {
     //creates card
-    let cardBody=$('<div class="card sticky-action">');
+    let cardBody=$('<div class="card sticky-action hoverable">');
     //stores img
     let cardImg=$('<img class="activator" src="'+ Cards.img[i]+'" ></div>');
     //stores the title on backside
@@ -118,7 +129,7 @@ function createCards(Cards)
     let cardImgHolder=$('<div class="card-image waves-effect waves-block waves-light" id="img'+i+'">');
     cardBody.append(cardImgHolder);
     cardImgHolder.append(cardImg);
-    cardBody.append('<div class="card-content"><span class="card-title activator grey-text text-darken-4 flow-text">'+ Cards.title[i]+'<i class="material-icons right">more_vert</i></span></div>');
+    cardBody.append('<div class="card-content"><span class="card-title activator grey-text text-darken-4 flow-text truncate"><i class="material-icons right">more_vert</i>'+ Cards.title[i]+'</span></div>');
     //create card back and store title, backinfo, and url
     let cardBackHolder=$('<div class="card-reveal">');
     cardBody.append(cardBackHolder);

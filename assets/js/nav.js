@@ -16,4 +16,16 @@ $(document).ready(function()
 
   //Top Navbar
   $(".dropdown-content").dropdown({ hover: true, constrainWidth: false });
+
+  //top button
+  // 
+  // $(".fixed-action-btn").onclick
+  // {
+  //   top: 0px;
+  // }
+
+  $(".fixed-action-btn").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
 });
