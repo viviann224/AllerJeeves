@@ -58,10 +58,12 @@ function makeCards(url, recipeSource)
 
     let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[];
 
+    let yummlySource="https://www.yummly.com/recipe/";
+
     // initiate a for loop to store recipe_id property and image_url property into their arrays
     //change to count later..
         for (var i = 0; i < count; i++) {
-          recipeArray.push(recipeSource + newObj[i].id);
+          recipeArray.push(yummlySource + newObj[i].id);
           idArray.push(newObj[i].id);
           imageArray.push(newObj[i].imageUrlsBySize[90]);
           ingredArray.push(newObj[i].ingredients);
@@ -98,7 +100,62 @@ function makeCards(url, recipeSource)
 }
 function createCards(Cards)
 {
-  console.log(Cards);
+  // initiate another for loop to create dynamic elements to display properties for each recipe card
+//Cards.id.length
+console.log(Cards);
+  for( let i=0;i<5;i++)
+  {
+    let cardBody=$('<div class="card sticky-action">');
+    cardBody.append('<div class="card-image waves-effect waves-block waves-light" id="img'+i+'">');
+    let cardImg=$('<img class="activator" src="'+ Cards.img[i]+'" ></div>');
+    $('.card-image').append(cardImg);
+    cardBody.append('<div class="card-content"><span class="card-title activator grey-text text-darken-4 flow-text">'+ Cards.title[i]+'<i class="material-icons right">more_vert</i></span></div>');
+    //var title
+    cardBody.append('<div class="card-reveal">');
+    let titleBack=$('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
+    $(".card-reveal").prepend(titleBack);
+    let backInfo= $('<p>'+Cards.ingList[i]+'</p>' );
+    $(".card-reveal").append(backInfo);
+    let cardUrl=$('<p><a href="'+Cards.url[i]+'">URL</a></p>');
+    $(".card-reveal").append(cardUrl);
+    $(".outputArea").append(cardBody);
+
+    cardBody="", cardImg="", titleBack="", backInfo="", cardUrl="";
+    console.log(titleBack);
+
+
+    /*var cardBody=$('<div class="card sticky-action">');
+    cardBody.append('<div class="card-image waves-effect waves-block waves-light">');
+    //var cardImg
+    $('.card-image').prepend('<img class="activator" src="'+ Cards.img[i]+'"></div>');
+    cardBody.append('<div class="card-content"><span class="card-title activator grey-text text-darken-4 flow-text">'+ Cards.title[i]+'<i class="material-icons right">more_vert</i></span></div>');
+    //var title
+    cardBody.append('<div class="card-reveal">');
+    $(".card-reveal").prepend('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
+    $(".card-reveal").append('<p>'+Cards.ingList[i]+'</p>' );
+    $(".card-reveal").append('<p><a href="'+Cards.url[i]+'">URL</a></p>');
+    $(".outputArea").append(cardBody);*/
+
+
+
+
+
+  }
+  //console.log(Cards);
+  // <div class="card sticky-action">
+  //   <div class="card-image waves-effect waves-block waves-light">
+  //     <img class="activator" src="https://lh4.ggpht.com/C2HeEmgmqPcGA0rHAITtGmmsydOzgK77I_Sh4R3xa0nYipK2RCallOeWpBLyGL6OW5VLzQtbuN9nlZ-3A62-fQ=s500-c">
+  //   </div>
+  //   <div class="card-content">
+  //     <span class="card-title activator grey-text text-darken-4 flow-text">Card Title<i class="material-icons right">more_vert</i></span>
+  //
+  //   </div>
+  //   <div class="card-reveal">
+  //     <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+  //     <p>Here is some more information about this product that is only revealed once clicked on.</p>
+  //     <p><a href="#">URL</a></p>
+  //   </div>
+  // </div>
 
 }
 
