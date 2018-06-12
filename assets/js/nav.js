@@ -22,12 +22,24 @@ $(document).ready(function()
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
   });
-  //login / logout modal
 
-   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  //enable modals to run
   $('.modal-trigger').leanModal();
-   // $('.loginModal').leanModal();
-   //  $('.signupModal').leanModal();
+
+  //when user clicks login close current modal then open login modal
+   $("#clickLogin").click(function()
+   {
+     $("#signupModal").closeModal();
+     $("#loginModal").openModal();
+   });
+
+   //when user clicks login close current modal then open login modal
+    $("#clickSignup").click(function()
+    {
+      $("#loginModal").closeModal();
+      $("#signupModal").openModal();
+
+    });
 
 
 });
