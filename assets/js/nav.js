@@ -41,5 +41,8 @@ $(document).ready(function()
 
     });
 
+    //char counter
+    $('input#icon_prefix, textarea#textarea1').characterCounter();
+
 
 });
