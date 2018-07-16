@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>Passport Authentication</title>
+  <title>Aller-Jeeves</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
@@ -32,4 +32,360 @@
 
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Aller-Jeeves</title>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+      <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+     	<!--css sheet-->
+     	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+      <!-- jQuery -->
+      <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <!-- materialize -->
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script>
+   </head>
+
+   <body>
+
+     <!-- Top NavBar -->
+    <nav>
+     <div class="nav-wrapper blue-grey">
+       <div class="row">
+         <div class="col s2">
+           <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      </div>
+
+     <div class="col s10 center">
+
+
+     <div class="col s7  flow-text">
+         <a class="waves-effect waves-light white-text" href="#">ALLER-JEEVES</a>
+
+     </div>
+     <div class="col s5">
+       <!-- <a class="waves-effect waves-light btn modal-trigger blue-grey lighten-2 " href="/signup.html">Sign Up</a> -->
+       <a class="waves-effect waves-light btn modal-trigger blue-grey lighten-2" href="/logout">
+         Logout
+       </a>
+
+
+
+         <!-- <a class="btn dropdown-button waves-effect waves-light white-text  blue-grey lighten-2 flow-text" id="log" href="#" data-activates="profile-dropdown">Login</a>
+         <ul id="profile-dropdown" class="dropdown-content">
+             <li><a href="#" class="flow-text grey-text text-darken-1"><i class="material-icons">person</i>Profile</a></li>
+             <li><a href="#" class="flow-text grey-text text-darken-2"><i class="material-icons">settings</i>Setting</a></li>
+             <li><a href="#" class="flow-text grey-text text-darken-2"><i class="material-icons">help</i>Help</a></li>
+             <li class="divider"></li>
+             <li><a href="#" class="flow-text grey-text text-darken-2"><i class="material-icons">lock</i>Lock</a></li>
+             <li><a href="#" class="logoutBtn flow-text grey-text text-darken-2"><i class="material-icons">exit_to_app</i>Logout</a></li>
+         </ul> -->
+     </div>
+   </div>
+
+
+
+   <!--side navBar -->
+     <ul class="side-nav blue-grey lighten-5" id="mobile-demo">
+
+
+       <li class="sidenav-header  blue-grey">
+         <div class="row">
+           <div class="col s4">
+               <i width="48px" height="48px" alt="" class="circle responsive-img valign profile-image material-icons">local_dining</i>
+           </div>
+           <div class="col s8 waves-effect waves-light white-text">
+             ALLER-JEEVES
+           </div>
+
+
+
+
+         </div>
+       </li>
+
+       <li class="white">
+         <ul class="collapsible collapsible-accordion">
+
+           <div class="row">
+                 <form class="col s12">
+                   <div class="row">
+
+          <div class="input-field col s12 flow-text blue-grey-text">
+            <p>
+            <input id="input_text" type="text" data-length="30" placeholder="Tofu" class="validate" class="flow-text">
+
+            <label for="input_text">INGREDIENT</label>
+
+          </div>
+        </div>
+        <a class="waves-effect waves-light btn blue-grey lighten-2" id="inputBtn">SEARCH<i class="material-icons right">pageview</i></a>
+
+                 </form>
+                 <div class="row">
+                 </div>
+               </div>
+
+    <!-- <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12 black-text validate active">
+            <input placeholder="Tofu" id="first_name" type="text">
+            <label for="foodSearch">Ingriedient</label>
+            <br>
+
+
+
+          </div>
+          <a class="waves-effect waves-light btn blue-grey lighten-2">SEARCH<i class="material-icons right">pageview</i></a>
+
+        </div>
+      </form>
+    </div> -->
+
+
+
+         </ul>
+       </li>
+
+       <li class="white">
+         <div class="row">
+         </div>
+         <ul class="collapsible collapsible-accordion">
+           <li>
+             <a class="collapsible-header waves-effect waves-blue center-align">Allergy Restrictions<i class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
+             <div class="collapsible-body">
+               <ul>
+                 <form class="checkbox" action="#">
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="dairy" name="interest" value="396^Dairy-Free"/>
+                     <label for="dairy">Dairy-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="gluten" name="interest" value="393^Gluten-Free"/>
+                     <label for="gluten">Gluten-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="peanuts" name="interest" value="394^Peanut-Free"/>
+                     <label for="peanuts">Peanut-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="soy" name="interest" value="400^Soy-Free"/>
+                     <label for="soy">Soy-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="egg" name="interest" value="397^Egg-Free"/>
+                     <label for="egg">Egg-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="sulfite" name="interest" value="401^Sulfite-Free"/>
+                     <label for="sulfite">Sulfite-Free</label>
+                   </a></li>
+
+                   <li><a class="waves-effect waves-blue" href="#">
+                     <input class= "allergy" type="checkbox" id="treeNut" name="interest" value="395^Tree Nut-Free"/>
+                     <label for="treeNut">Tree Nut-Free</label>
+                   </a></li>
+
+                 <li><div class="divider"></div></li>
+               </ul>
+             </div>
+           </li>
+         </ul>
+       </li>
+
+
+
+       <li class="white">
+         <ul class="collapsible collapsible-accordion">
+           <li>
+             <a class="collapsible-header waves-effect waves-blue center-align">Dietary Restrictions<i class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
+             <div class="collapsible-body">
+               <ul>
+                 <li><a class="waves-effect waves-blue" href="#">
+                   <input class= "diet" type="checkbox" id="veggie" name="interest" value="387^Lacto-ovovegetarian"/>
+                   <label for="veggie">Vegetarian</label>
+                 </a></li>
+
+                 <li><a class="waves-effect waves-blue" href="#">
+                   <input class= "diet" type="checkbox" id="vegan" name="interest" value="386^Vegan"/>
+                   <label for="vegan">Vegan</label>
+                 </a></li>
+
+                 <li><a class="waves-effect waves-blue" href="#">
+                   <input class= "diet" type="checkbox" id="pescetarian" name="interest" value="390^Pescetarian"/>
+                   <label for="pescetarian">Pescetarian</label>
+                 </a></li>
+
+                 <li><a class="waves-effect waves-blue" href="#">
+                   <input class= "diet" type="checkbox" id="paleo" name="interest" value="403^Paleo"/>
+                   <label for="paleo">Paleo</label>
+                 </a></li>
+
+                  </form>
+
+               </ul>
+             </div>
+           </li>
+         </ul>
+         <div class="row">
+         </div>
+         <div class="row">
+         </div>
+       </li>
+
+
+
+
+
+
+       <li class="sidenav-footer blue-grey lighten-5">
+         <div class="row">
+           <li class="white center-align hoverable"><a href="#" class="waves-effect waves-blue ">ABOUT</a></li>
+
+           <div class="social-icons">
+
+             <div class="col s1">
+               <a href="#">LI</a>
+             </div>
+             <div class="col s2">
+               <a href="#">FB</a>
+             </div>
+             <div class="col s2">
+               <a href="#">Twit</a>
+             </div>
+             <div class="col s3">
+               <a href="#">Google</a>
+             </div>
+             <div class="col s2">
+               <a href="#">Pin</a>
+             </div>
+             <div class="col s2">
+               <a href="#">YT</a>
+             </div>
+           </div>
+         </div>
+       </li>
+
+
+     </ul>
+
+   </div>
+ </nav>
+ <!-- body with cards-->
+ <div class="col-md-6 col-md-offset-3">
+   <h2>How can we help you today <span class="member-name"></span>?</h2>
+ </div>
+ <div class="outputArea">
+ </div>
+<!-- signup modal -->
+<!-- Modal Trigger -->
+ <!-- <a class="waves-effect waves-light btn modal-trigger" href="#signupModal">Sign Up</a> -->
+
+ <!-- Modal Structure -->
+ <div id="signupModal" class="modal modal-fixed-footer">
+   <div class="modal-content">
+     <h4>Sign Up</h4>
+     <div class="row">
+       <form class="col s12 signup">
+         <div class="row">
+           <div class="input-field col s12">
+             <i class="material-icons prefix">account_circle</i>
+             <br>
+             <input id="newusername-input" type="text" class="validate" data-length="15">
+
+             <label for="newusername-input">User Name</label>
+           </div>
+
+           <div class="input-field col s12">
+             <i class="material-icons prefix">email</i>
+             <br>
+          <input id="newemail-input" type="email" class="validate">
+          <label for="newemail-input" data-error="Not a vaild email" >Email</label>
+
+        </div>
+           <div class="input-field col s12">
+               <i class="material-icons prefix">vpn_key</i>
+               <br>
+               <input id="newpassword-input" type="password" class="validate" data-length="15">
+               <label for="newpassword-input">Password</label>
+           </div>
+          <!--  <button type="submit" id="loginBtn" class="waves-effect waves-green btn blue-grey lighten-2">Login</button> -->
+           <button type="submit" id="signupBtn" class="waves-effect waves-green btn blue-grey lighten-2">Create</button>
+           <br><br>Click <a id ="clickLogin">HERE</a> to sign in.
+         </div>
+       </form>
+     </div>
+
+   </div>
+   <div class="modal-footer">
+     <a href="#!" class="modal-close waves-effect waves-green btn blue-grey lighten-2">CLOSE</a>
+   </div>
+ </div>
+
+ <!-- login modal-->
+ <!-- Modal Trigger -->
+  <!-- <a class="waves-effect waves-light btn modal-trigger " href="#loginModal">Login</a> -->
+
+  <!-- Modal Structure -->
+  <div id="loginModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h5>Login</h5>
+      <div class="row">
+        <form class="col s12 login">
+          <div class="row form-group">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+
+              <br>
+           <input id="email-input" type="email" class="validate">
+           <label for="email" data-error="Not a vaild email" >Email</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">vpn_key</i>
+                <br>
+                <input id="password-input" type="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+
+            <button type="submit" id="loginBtn" class="waves-effect waves-green btn blue-grey lighten-2">Login</button>
+             <br><br>Click <a id="clickSignup" class=" waves-effect waves-green">HERE</a> to create an account
+          </div>
+        </form>
+        <!-- <div class="row">
+          <strong>New?</strong>
+
+        </div> -->
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+
+
+        <a href="#!" class="modal-close waves-effect waves-green btn blue-grey lighten-2 right-align">Close</a>
+    </div>
+  </div>
+
+<!-- go to top button -->
+<div class="fixed-action-btn"><a class="btn-floating btn-large  blue-grey hoverable" href="https://gitter.im/Dogfalo/materialize" target="_blank"><i class="large material-icons">TOP</i></a></div>
+  <script src="js/nav.js"></script>
+<!--   <script src="js/signup.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/logout.js"></script> -->
+  <script src="js/jeeves.js"></script>
+  <script src="js/members.js"></script>
+
+<!--   </script> -->
+   </body>
 </html>

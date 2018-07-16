@@ -16,7 +16,7 @@ passport.use(new LocalStrategy(
         email: email
       }
     }).then(function(dbUser) {
-      // If there's no user with the given email
+      //there's no user with the given email
       if (!dbUser) {
         return done(null, false, {
           message: "Incorrect email."
@@ -28,7 +28,7 @@ passport.use(new LocalStrategy(
           message: "Incorrect password."
         });
       }
-      // If none of the above, return the user
+      // if correct go ahead and store the user into the secession
       return done(null, dbUser);
     });
   }
@@ -40,7 +40,7 @@ passport.use(new LocalStrategy(
 passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
-
+//use to pass into request
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });

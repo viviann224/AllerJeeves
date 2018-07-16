@@ -2,7 +2,8 @@ $(document).ready(function()
 {
 
   //enable modals to run
-  $('.modal-trigger').leanModal();
+  //turningoff modal
+  //$('.modal-trigger').leanModal();
 
   // //when user clicks login close current modal then open login modal
   //  $("#clickLogin").click(function()
@@ -33,11 +34,6 @@ $(document).ready(function()
           return;
         }
 
-        // If we have an email and password we run the loginUser function and clear the form
-        loginUser(userData.email, userData.password);
-        emailInput.val("");
-        passwordInput.val("");
-
           // If we have an email and password we run the loginUser function and clear the form
           loginUser(userData.email, userData.password);
           emailInput.val("");
@@ -52,8 +48,11 @@ $(document).ready(function()
           }).then(function(data) {
             window.location.replace(data);
             // If there's an error, log the error
+            console.log("invalid pw");
+            $("form.login").append("Invalid login. Please try again");
           }).catch(function(err) {
             console.log(err);
+
           });
         }
 
@@ -72,7 +71,8 @@ $(document).ready(function()
     });
 
     //char counter
-    $('input#icon_prefix, textarea#textarea1').characterCounter();
+    //turning off
+    //$('input#icon_prefix, textarea#textarea1').characterCounter();
 
 
   // // Getting references to our form and inputs

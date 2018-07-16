@@ -104,7 +104,7 @@ function makeCards(url, recipeSource)
       else
       {
         //appends the card to html
-        $(".outputArea").append("I am sorry please search again");
+        $("form.outputArea").append("I am sorry please search again");
       }
     //return Cards;
   });

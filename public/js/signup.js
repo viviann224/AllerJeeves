@@ -1,7 +1,8 @@
 $(document).ready(function()
 {
   //enable modals to run
-  $('.modal-trigger').leanModal();
+  //turning off
+  //$('.modal-trigger').leanModal();
 
   //when user clicks login close current modal then open login modal
    $("#clickLogin").click(function()
@@ -77,7 +78,8 @@ $(document).ready(function()
    //  });
 
     //char counter
-    $('input#icon_prefix, textarea#textarea1').characterCounter();
+    //turningoff
+    //$('input#icon_prefix, textarea#textarea1').characterCounter();
 
 
   // // Getting references to our form and input
