@@ -20,7 +20,8 @@ form.login {
 	width:85% !important;
 }
 
-
+.capitalize
+{ text-transform: capitalize; }
 
 #clickSignup
 {
