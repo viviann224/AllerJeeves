@@ -3,6 +3,11 @@ form.login {
   margin-top: 50px;
 }
 
+.navbar-default
+{
+  background-color: #557280;
+}
+
 #password, #email
 {
 	border-bottom: 1px solid #000;
@@ -29,6 +34,21 @@ h5
 	margin:5px !important;
 	font-weight: bold;
 }
+
+.header{
+  color: #ffffff;
+  text-align: center;
+  font-size:4.2rem !important;
+	margin:5px !important;
+	font-weight: none;
+
+}
+
+.mainForm
+{
+  background-color: white;
+}
+
 
 
 
@@ -84,6 +104,14 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #e9ecef !important;
+    color:#3e3f3f !important;
+
+  }
+
+  h2
+  {
+    color:#3e3f3f !important;
   }
 
   main {
