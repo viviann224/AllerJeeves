@@ -36,8 +36,8 @@ $(document).ready(function()
 
           // If we have an email and password we run the loginUser function and clear the form
           loginUser(userData.email, userData.password);
-          emailInput.val("");
-          passwordInput.val("");
+          $("#email-input").val("");
+          $("#password-input").val("");
         });
 
         // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
@@ -48,9 +48,10 @@ $(document).ready(function()
           }).then(function(data) {
             window.location.replace(data);
             // If there's an error, log the error
-            console.log("invalid pw");
-            $("form.login").append("Invalid login. Please try again");
+
           }).catch(function(err) {
+            console.log("invalid pw");
+            $("form.login").append("<br>Invalid login. Please try again");
             console.log(err);
 
           });
