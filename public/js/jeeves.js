@@ -104,7 +104,7 @@ function makeCards(url, recipeSource)
       else
       {
         //appends the card to html
-        $("form.outputArea").append("I am sorry please search again");
+        $(".outputArea").append("<p><h3>I am sorry we cannot find your search in our database. Please search again</h3></p>");
       }
     //return Cards;
   });
@@ -124,7 +124,7 @@ function createCards(Cards)
     //stores backside info
     let backInfo= $('<p>'+Cards.ingList[i]+'</p>' );
     //stores url
-    let cardUrl=$('<p><a href="'+Cards.url[i]+'">URL</a></p>');
+    let cardUrl=$('<p><a href="'+Cards.url[i]+'">Learn More</a></p>');
     //create card front and store img and title
     let cardImgHolder=$('<div class="card-image waves-effect waves-block waves-light" id="img'+i+'">');
     cardBody.append(cardImgHolder);

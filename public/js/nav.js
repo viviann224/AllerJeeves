@@ -3,6 +3,7 @@
 // SIDEBAR
 $(document).ready(function()
 {
+
   $('.button-collapse').sideNav(
     {
       menuWidth: 300, // Default is 300
@@ -44,5 +45,23 @@ $(document).ready(function()
   //   //char counter
   //   $('input#icon_prefix, textarea#textarea1').characterCounter();
   //
+
+  //enable modals to run
+  $('.modal-trigger').leanModal();
+
+  // //when user clicks login close current modal then open login modal
+   $("#about").click(function()
+   {
+
+  //    $("#signupModal").closeModal();
+     $("#aboutModal").openModal();
+   });
+   // //when user clicks login close current modal then open login modal
+    $("#close").click(function()
+    {
+
+   //    $("#signupModal").closeModal();
+      $(".lean-overlay").hide();
+    });
 
 });
