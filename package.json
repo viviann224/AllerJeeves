@@ -1,7 +1,7 @@
 {
-  "name": "1-Passport-Example",
+  "name": "Aller-Jeeves",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aller-Jeeves is a food application created to help alleviate the stress felt by individuals and families with dietary and/or allergy restrictions.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,6 +15,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "mysql": "^2.15.0",
     "mysql2": "^1.3.6",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
