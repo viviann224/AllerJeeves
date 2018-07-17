@@ -22,18 +22,20 @@ Aller-Jeeves contains recipe cards with the recipes, a picture of the dish, and 
 **HOW TO USE**:
 Once pages loads, the user is able to search for recipes by the name of a specific recipe or recipes containing a certain ingredient. The user also has the ability to further narrow down the search by checking the optional checkboxes based on any allergy and/or dietary restrictions.
 
-The results are then displayed on cards with the name of the recipe, an image of the recipe dish, and a bookmark button option once the user logs in. Once the user clicks on the recipe card, the card will flip over to the back where a list of the ingredients are displayed with a button.
+The results are then displayed on cards with the name of the recipe, an image of the recipe dish. Once the user clicks on the recipe card, the card will display list of the ingredients are displayed with a link to get the recipe.
 
-If the user clicks the button on the back of the card, a new tab will open and take the user to the originial source of the recipe where a detailed set of cooking instructions are available to the user.
+If the user clicks the button on the link a new tab will open and take the user to the originial source of the recipe where a detailed set of cooking instructions are available to the user.
 
-If the user wants to search for a different recipe, there is a search box, followed by a dropdown menu for the dietary/allergy restrictions, and a submission button to initiate a new search. This will become the main page for the user's interaction for recipe requests after the first search request is complete.
+If the user wants to search for a different recipe, there is a search box, the user will reuse the side navigation to seach for a new result. The user is able to login. The next newest update is to add a "favorites" option that is associated to the logged in user.
 
 **BUILT WITH**:
 - Sublime Text
 - Chrome DevTools
 - Materialize
 - Adobe Photoshop CC 2015.5
-- Firebase
+- Sequel Pro
+- JawsDB
+- Heroku
 - Google Fonts
 
 **VERSION**:
