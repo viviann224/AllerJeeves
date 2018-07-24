@@ -40,6 +40,7 @@ passport.use(new LocalStrategy(
 passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
+
 //use to pass into request
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);

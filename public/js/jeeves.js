@@ -1,3 +1,32 @@
+$(document).on("click", "#content", saveCard);
+
+function saveCard(event)
+{
+ event.preventDefault();
+
+var title=$(this).parent().find("span")[0].textContent;
+var url=$(this).parent().find("p")[1];
+
+ var newSave =
+ {
+   recUrl:url.getElementsByTagName('a')[0].getAttribute('href'),
+   recId: (url.getElementsByTagName('a')[0].getAttribute('href')).split("/")[4],
+   recImg: $(this).parent().find("img").attr("src"),
+   recIngList:$(this).parent().find("p")[0].textContent,
+   recTitle:title.replace("more_vert", "")
+ };
+
+$(this).addClass("saved");
+{
+  //var title=$(this).parent().find("p")[1];
+  //var myId=(title.getElementsByTagName('a')[0].getAttribute('href')).split("/")[4];
+  console.log(newSave);
+
+
+}
+}
+
+
 // call function when submit button is pressed
 $("#inputBtn").on("click", function(event)
 {
@@ -117,8 +146,13 @@ function createCards(Cards)
   {
     //creates card
     let cardBody=$('<div class="card sticky-action hoverable">');
+    let favImg=$('<div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
+    cardBody.append(favImg);
+
     //stores img
     let cardImg=$('<img class="activator" src="'+ Cards.img[i]+'" ></div>');
+//cardImg.append(favImg);
+//favorite
     //stores the title on backside
     let titleBack=$('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
     //stores backside info
@@ -129,6 +163,7 @@ function createCards(Cards)
     let cardImgHolder=$('<div class="card-image waves-effect waves-block waves-light" id="img'+i+'">');
     cardBody.append(cardImgHolder);
     cardImgHolder.append(cardImg);
+
     cardBody.append('<div class="card-content"><span class="card-title activator grey-text text-darken-4 flow-text truncate"><i class="material-icons right">more_vert</i>'+ Cards.title[i]+'</span></div>');
     //create card back and store title, backinfo, and url
     let cardBackHolder=$('<div class="card-reveal">');

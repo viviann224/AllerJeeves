@@ -1,3 +1,21 @@
+/*favorite styling*/
+#content  {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+     z-index: 10;
+     text-shadow: 2px 2px 8px #000000;
+     padding:0px;
+}
+
+i.fav-icon
+{
+
+    color: #b71c1c;
+    z-index: 11;
+
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
