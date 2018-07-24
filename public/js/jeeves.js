@@ -117,7 +117,7 @@ function createCards(Cards)
 {
   // initiate another for loop to create dynamic elements to display properties for each recipe card
   //Cards.id.length
-  for( let i=0;i<15;i++)
+  for( let i=0;i<15 &&i<Cards.img.length;i++)
   {
     //creates card
     let cardBody=$('<div class="card sticky-action hoverable">');

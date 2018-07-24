@@ -54,6 +54,42 @@ $(document).ready(function() {
     $(".savedRec").on("click", function(event)
     {
       //alert("clicked");
+      $.get("/api/saved/" + data.id, function(data) {
+      console.log("users favorites", data);
+      var userFav = data;
+      if (!userFav || !userFav.length) {
+        $(".outputArea").append("<p><h3>I am sorry You have nothing saved</h3></p>");
+      }
+      else {
+      var imgArr=[];
+      var titleArr=[];
+      var listArr=[];
+      var urlArr=[];
+
+        for(var x=0;x<data.length;x++)
+        {
+          imgArr.push(data[x].recImg);
+          titleArr.push( data[x].recTitle);
+          listArr.push (data[x].recIngList);
+          urlArr.push(data[x].recUrl);
+        }
+        var UsersCards =
+        {
+          img:imgArr,
+          title:titleArr,
+          ingList:listArr,
+          url:urlArr
+        }
+        console.log(UsersCards);
+        // var userFave.img=userFave.recImg;
+        // var userFave.title= userFave.recTitle;
+        // var userFave.ingList = userFav.recIngList;
+        // var userFave.url= userFave.recUrl;
+        createCards(UsersCards);
+        $(".lean-overlay").attr("display", "show");
+
+      }
+    });
 
     });
 
