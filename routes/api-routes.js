@@ -32,7 +32,52 @@ module.exports = function(app)
       // res.status(422).json(err.errors[0].message);
     });
   });
-  //
+  //get all from database
+  // GET route for getting all of the posts
+  app.get("/api/saved", function(req, res) {
+    var query = {};
+    if (req.query.UserId) {
+      query.UserId = req.query.id;
+    }
+    db.Save.findAll({
+      where: query
+    }).then(function(dbSaved) {
+      res.json(dbSaved);
+    });
+  });
+
+  // Get all specific user's saves
+  app.get("/api/saved/:id", function(req, res) {
+    db.Save.findAll({
+      where: {
+        UserId: req.params.id
+      }
+    })
+    .then(function(dbSaved) {
+      res.json(dbSaved);
+    });
+  });
+
+  //add a save to user
+  app.post("/api/save", function(req, res) {
+    console.log(req.body);
+    db.Save.create({
+      recId:req.body.recId,
+      recUrl: req.body.recUrl,
+      recImg: req.body.recImg,
+      recIngList: req.body.recIngList,
+      recTitle: req.body.recTitle,
+      recIngList: req.body.recIngList,
+      UserId:req.body.UserId
+    }).then(function() {
+      //tell user acct created
+      //res.redirect(307, "/api/login");
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();

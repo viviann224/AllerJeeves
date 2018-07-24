@@ -1,30 +1,5 @@
-$(document).on("click", "#content", saveCard);
-
-function saveCard(event)
-{
- event.preventDefault();
-
-var title=$(this).parent().find("span")[0].textContent;
-var url=$(this).parent().find("p")[1];
-
- var newSave =
- {
-   recUrl:url.getElementsByTagName('a')[0].getAttribute('href'),
-   recId: (url.getElementsByTagName('a')[0].getAttribute('href')).split("/")[4],
-   recImg: $(this).parent().find("img").attr("src"),
-   recIngList:$(this).parent().find("p")[0].textContent,
-   recTitle:title.replace("more_vert", "")
- };
-
-$(this).addClass("saved");
-{
-  //var title=$(this).parent().find("p")[1];
-  //var myId=(title.getElementsByTagName('a')[0].getAttribute('href')).split("/")[4];
-  console.log(newSave);
 
 
-}
-}
 
 
 // call function when submit button is pressed
@@ -148,6 +123,7 @@ function createCards(Cards)
     let cardBody=$('<div class="card sticky-action hoverable">');
     let favImg=$('<div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
     cardBody.append(favImg);
+
 
     //stores img
     let cardImg=$('<img class="activator" src="'+ Cards.img[i]+'" ></div>');
