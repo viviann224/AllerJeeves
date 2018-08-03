@@ -127,7 +127,7 @@ function createCards(Cards)
     //stores the title on backside
     let titleBack=$('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
     //stores backside info
-    let backInfo= $('<p class="capitalize">'+Cards.ingList[i]+'</p>' );
+    let backInfo= $('<p class="capitalize"><strong>Ingredients:</strong>'+Cards.ingList[i]+'</p>' );
     //stores url
     let cardUrl=$('<p><a href="'+Cards.url[i]+'">Learn More</a></p>');
     //create card front and store img and title
