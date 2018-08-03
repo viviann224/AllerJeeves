@@ -5,17 +5,19 @@ $(document).ready(function()
   $.get("/api/user_data").then(function(data)
   {
     console.log(data);
+    //displays a welcome greeting to login user
     $(".member-name").text(data.username);
 
+    //saves a new card as a favorite for user
     function saveCard( event)
     {
       event.preventDefault();
-     var myId=data.id;
+      var myId=data.id;
       var title=$(this).parent().find("span")[0].textContent;
       var url=$(this).parent().find("p")[1];
 
        $(this).addClass("saved");
-
+       //create a newsaved object
         var newSave =
         {
           recUrl:url.getElementsByTagName('a')[0].getAttribute('href'),
@@ -37,78 +39,61 @@ $(document).ready(function()
 
     $(document).on("click", "#content", saveCard);
 
-  $(".savedRec").on("click", function(event)
-  {
-      //alert("clicked");
-      $.get("/api/saved/" + data.id, function(data)
-      {
-      console.log("users favorites", data);
-      $(".outputArea").empty();
-      var userFav = data;
-      if (!userFav || !userFav.length)
-      {
-        $(".outputArea").append("<p><h3>I am sorry You have nothing saved</h3></p>");
-      }
-      else
-      {
-        var imgArr=[];
-        var titleArr=[];
-        var listArr=[];
-        var urlArr=[];
-
-        for(var x=0;x<data.length;x++)
+    //function to display user's current favorited cards
+    $(".savedRec").on("click", function(event)
+    {
+        //alert("clicked");
+        $.get("/api/saved/" + data.id, function(data)
         {
-          imgArr.push(data[x].recImg);
-          titleArr.push( data[x].recTitle);
-          listArr.push (data[x].recIngList);
-          urlArr.push(data[x].recUrl);
-        }
-        var UsersCards =
+        console.log("users favorites", data);
+        $(".outputArea").empty();
+        var userFav = data;
+        if (!userFav || !userFav.length)
         {
-          img:imgArr,
-          title:titleArr,
-          ingList:listArr,
-          url:urlArr
+          $(".outputArea").append("<p><h3>I am sorry You have nothing saved</h3></p>");
         }
-        console.log(UsersCards);
+        else
+        {
+          var imgArr=[];
+          var titleArr=[];
+          var listArr=[];
+          var urlArr=[];
 
-        createCards(UsersCards);
-        $(".lean-overlay").attr("display", "show");
-      }
+          for(var x=0;x<data.length;x++)
+          {
+            imgArr.push(data[x].recImg);
+            titleArr.push( data[x].recTitle);
+            listArr.push (data[x].recIngList);
+            urlArr.push(data[x].recUrl);
+          }
+          var UsersCards =
+          {
+            img:imgArr,
+            title:titleArr,
+            ingList:listArr,
+            url:urlArr
+          }
+          console.log(UsersCards);
+
+          createCards(UsersCards);
+          $(".lean-overlay").attr("display", "show");
+        }
+      });
     });
 
   });
-
-  });
-
-  // function getUser()
-  // {
-  //   $.get("/api/user_data").then(function(data)
-  //   {
-  //     console.log(data.id);
-  //     //return parseInt(data.id);
-  //   }.then(saveCard(parseInt(data.id))));
-  // };
-
-
-
   //enable modals to run
   $('.modal-trigger').leanModal();
 
   // //when user clicks login close current modal then open login modal
    $("#about").click(function()
    {
-
-  //    $("#signupModal").closeModal();
      $("#aboutModal").openModal();
    });
+
    // //when user clicks login close current modal then open login modal
     $("#close").click(function()
     {
-
-   //    $("#signupModal").closeModal();
       $(".lean-overlay").hide();
     });
-
-
 });

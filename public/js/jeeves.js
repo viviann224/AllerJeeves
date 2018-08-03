@@ -71,6 +71,12 @@ function makeCards(url, recipeSource)
           recipeArray.push(yummlySource + newObj[i].id);
           idArray.push(newObj[i].id);
           imageArray.push(newObj[i].imageUrlsBySize[90]);
+
+          //for loop for specific formatting for specific ingredient
+          for(var x=0;x<newObj[i].ingredients.length;x++)
+          {
+            newObj[i].ingredients[x]=" "+newObj[i].ingredients[x];
+          }
           ingredArray.push(newObj[i].ingredients);
           titleArray.push(newObj[i].recipeName);
         }
@@ -80,11 +86,6 @@ function makeCards(url, recipeSource)
           imageArray[j] = imageArray[j].toString().replace("s90", "s500");
           imageArray[j] = imageArray[j].toString().replace("http://", "https://");
         }
-        // console.log(recipeArray);
-        // console.log(idArray);
-        // console.log(imageArray);
-        // console.log(ingredArray);
-        // console.log(titleArray);
 
         var Cards =
         {
@@ -95,8 +96,6 @@ function makeCards(url, recipeSource)
           title: titleArray,
 
         };
-
-        //console.log(Cards);
 
         if(Cards.url.length>0)
         { createCards(Cards);}
@@ -128,7 +127,7 @@ function createCards(Cards)
     //stores the title on backside
     let titleBack=$('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
     //stores backside info
-    let backInfo= $('<p>'+Cards.ingList[i]+'</p>' );
+    let backInfo= $('<p class="capitalize">'+Cards.ingList[i]+'</p>' );
     //stores url
     let cardUrl=$('<p><a href="'+Cards.url[i]+'">Learn More</a></p>');
     //create card front and store img and title
@@ -189,7 +188,10 @@ function getAllergy()
 
 //trigger button click on enter key
 $("input").keypress(function() {
-    if (event.which == 13) submitReq(event);
+    if (event.which == 13)
+    {
+      submitReq(event);
+    }
 });
 
 $('#inputBtn').click(submitReq);
