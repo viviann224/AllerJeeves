@@ -56,6 +56,7 @@ $(document).ready(function() {
       //alert("clicked");
       $.get("/api/saved/" + data.id, function(data) {
       console.log("users favorites", data);
+      $(".outputArea").empty();
       var userFav = data;
       if (!userFav || !userFav.length) {
         $(".outputArea").append("<p><h3>I am sorry You have nothing saved</h3></p>");
@@ -81,10 +82,7 @@ $(document).ready(function() {
           url:urlArr
         }
         console.log(UsersCards);
-        // var userFave.img=userFave.recImg;
-        // var userFave.title= userFave.recTitle;
-        // var userFave.ingList = userFav.recIngList;
-        // var userFave.url= userFave.recUrl;
+
         createCards(UsersCards);
         $(".lean-overlay").attr("display", "show");
 
