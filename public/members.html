@@ -252,7 +252,7 @@
 
        <li class="sidenav-footer blue-grey lighten-5">
          <div class="row">
-           <li class="white center-align hoverable"><a href="#" class="waves-effect waves-blue ">ABOUT</a></li>
+           <li class="white center-align hoverable"><a id="about" href="#" class="waves-effect waves-blue ">ABOUT</a></li>
 
            <div class="social-icons">
 
@@ -336,6 +336,32 @@
    </div>
  </div>
 
+ <!-- Modal Structure -->
+ <div id="aboutModal" class="modal modal-fixed-footer">
+   <div class="modal-content">
+     <h5>ABOUT US</h5>
+     <div class="row">
+       <form class="col s16 login">
+     <p>Aller-Jeeves is a food application created to help alleviate the stress
+       felt by individuals and families with dietary and/or allergy restrictions
+       . Whether it is to find something new and delicious or wanting to find
+       recipes for everyone to enjoy together. Next time someone ask what can
+       you eat, introduce them to Aller-Jeeves, where our recipes will meet
+       your needs.</p>
+
+       <p>Aller-Jeeves contains recipe cards with the recipes, a picture of the
+         dish. When the user clicks on the recipe the card flips over to
+         the back to display a list of ingredients and a button linked to the
+         recipe.</p>
+     </form>
+     </div>
+
+
+   </div>
+   <div class="modal-footer">
+       <a href="#" id="close" class="modal-close waves-effect waves-green btn blue-grey lighten-2 right-align">Close</a>
+   </div>
+ </div>
  <!-- login modal-->
  <!-- Modal Trigger -->
   <!-- <a class="waves-effect waves-light btn modal-trigger " href="#loginModal">Login</a> -->
@@ -381,8 +407,8 @@
   </div>
 
 <!-- go to top button -->
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue-grey hoverable" href="https://gitter.im/Dogfalo/materialize" target="_blank"><i class="large material-icons">TOP</i></a>
+<div class="fixed-action-btn right-align">
+  <a class="btn-floating btn-large blue-grey hoverable right-align" href="https://gitter.im/Dogfalo/materialize" target="_blank"><i class="large material-icons right-align">TOP</i></a>
 </div>
   <script src="js/nav.js"></script>
 <!--   <script src="js/signup.js"></script>

@@ -1,11 +1,9 @@
-
-
-$(document).ready(function() {
-
-
+$(document).ready(function()
+{
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
-  $.get("/api/user_data").then(function(data) {
+  $.get("/api/user_data").then(function(data)
+  {
     console.log(data);
     $(".member-name").text(data.username);
 
@@ -16,13 +14,7 @@ $(document).ready(function() {
       var title=$(this).parent().find("span")[0].textContent;
       var url=$(this).parent().find("p")[1];
 
-
-
-
-
-
        $(this).addClass("saved");
-
 
         var newSave =
         {
@@ -41,31 +33,28 @@ $(document).ready(function() {
         {
           console.log("datastored");
         });
-
-
-
-
-
-
     }
 
     $(document).on("click", "#content", saveCard);
 
-    $(".savedRec").on("click", function(event)
-    {
+  $(".savedRec").on("click", function(event)
+  {
       //alert("clicked");
-      $.get("/api/saved/" + data.id, function(data) {
+      $.get("/api/saved/" + data.id, function(data)
+      {
       console.log("users favorites", data);
       $(".outputArea").empty();
       var userFav = data;
-      if (!userFav || !userFav.length) {
+      if (!userFav || !userFav.length)
+      {
         $(".outputArea").append("<p><h3>I am sorry You have nothing saved</h3></p>");
       }
-      else {
-      var imgArr=[];
-      var titleArr=[];
-      var listArr=[];
-      var urlArr=[];
+      else
+      {
+        var imgArr=[];
+        var titleArr=[];
+        var listArr=[];
+        var urlArr=[];
 
         for(var x=0;x<data.length;x++)
         {
@@ -85,11 +74,10 @@ $(document).ready(function() {
 
         createCards(UsersCards);
         $(".lean-overlay").attr("display", "show");
-
       }
     });
 
-    });
+  });
 
   });
 

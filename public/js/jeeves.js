@@ -1,9 +1,5 @@
-
-
-
-
 // call function when submit button is pressed
-$("#inputBtn").on("click", function(event)
+ var submitReq = function(event)
 {
   // prevent page refresh when submit is pressed
   event.preventDefault();
@@ -28,7 +24,7 @@ $("#inputBtn").on("click", function(event)
    makeCards(myURL,recipeSource );
   //console.log(myCard);
 
-});
+};
 //code for specific recipe info
 //var recipeURL="https://api.yummly.com/v1/api/recipe/"+"Funnel-Cakes-1580470"+"?_app_id="+ appId+"&_app_key="+ appKey;
 
@@ -190,3 +186,28 @@ function getAllergy()
   });
   return allergyRequest;
 }
+
+//trigger button click on enter key
+$("input").keypress(function() {
+    if (event.which == 13) submitReq(event);
+});
+
+$('#inputBtn').click(submitReq);
+// var input = document.getElementById("input_text");
+// input.addEventListener("keyup", function(event)
+// {
+//
+//     event.preventDefault();
+//     alert("entered!");
+//     if (event.keyCode === 13)
+//     {
+//         document.getElementById("inputBtn").click();
+//     }
+// });
+
+//top button
+$(".fixed-action-btn").click(function()
+{
+$("html, body").animate({ scrollTop: 0 }, "slow");
+return false;
+});

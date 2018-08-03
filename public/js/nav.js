@@ -18,11 +18,7 @@ $(document).ready(function()
   //Top Navbar
   $(".dropdown-content").dropdown({ hover: true, constrainWidth: false });
 
-  //top button
-  $(".fixed-action-btn").click(function() {
-  $("html, body").animate({ scrollTop: 0 }, "slow");
-  return false;
-  });
+
 
   // //enable modals to run
   // $('.modal-trigger').leanModal();
@@ -49,7 +45,7 @@ $(document).ready(function()
   //enable modals to run
   $('.modal-trigger').leanModal();
 
-  // //when user clicks login close current modal then open login modal
+  // //when user clicks on about, open the about modal
    $("#about").click(function()
    {
 
