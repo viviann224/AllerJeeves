@@ -121,8 +121,9 @@ function createCards(Cards)
   {
     //creates card
     let cardBody=$('<div class="card sticky-action hoverable">');
-    let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div><div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
-    cardBody.append(favImg);
+    if(isLogged)
+    {let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div><div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
+    cardBody.append(favImg);}
 
 
     //stores img

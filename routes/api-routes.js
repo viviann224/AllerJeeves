@@ -114,17 +114,6 @@ module.exports = function(app)
     });
   });
 
-  // // Get all specific user's saves
-  // app.get("/api/saved/id/:recId", function(req, res) {
-  //   db.Save.findAll({
-  //     where: {
-  //       //UserId: req.params.id,
-  //       recId: req.params.recId
-  //     }
-  //   })
-  //   .then(function(dbSaved) {
-  //     res.json(dbSaved);
-  //   });
-  // });
+
 
 };
