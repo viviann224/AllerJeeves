@@ -78,6 +78,7 @@ $(document).ready(function()
     }
 
 
+
     $(document).on("click", ".deleteRec", deleteRecipe);
 
     // $(document).on("click", ".deleteRec", deleteRecipe($(this).value()));
@@ -87,15 +88,21 @@ $(document).ready(function()
     {
     event.preventDefault();
     //alert("delete!"+$(this).val().trim());
-    var recId=$(this).attr("value");
+    var deleteId=$(this).attr("value");
     console.log(deleteId);
-    //   // $.ajax({
-    //   //   method: "DELETE",
-    //   //   url: "/api/posts/" + recId
-    //   // })
-    //   // .then(function() {
-    //   //   getPosts(postCategorySelect.val());
-    //   // });
+    var deleteObj=
+    {
+      id:deleteId
+    }
+    var id=data.id
+      $.ajax({
+        method: "DELETE",
+        url: "/api/posts/" + id,
+        data: deleteObj
+      })
+      .then(function() {
+        displayCard();
+      });
     }
 
     $(document).on("click", "#content", saveCard);

@@ -18,16 +18,28 @@ module.exports = function(app) {
       res.json(dbPost);
     });
   });
-
-  // DELETE route for deleting posts
-  app.delete("/api/posts/:id", function(req, res) {
-    db.Save.destroy({
+  // Get all specific user's saves
+  app.get("/api/saved/id/:recId", function(req, res) {
+    db.Save.findAll({
       where: {
+        //UserId: req.params.id,
         recId: req.params.recId
       }
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    })
+    .then(function(dbSaved) {
+      res.json(dbSaved);
     });
   });
+
+  // // DELETE route for deleting posts
+  // app.delete("/api/posts/:recId", function(req, res) {
+  //   db.Save.destroy({
+  //     where: {
+  //       recId: req.params.recId
+  //     }
+  //   }).then(function(dbPost) {
+  //     res.json(dbPost);
+  //   });
+  // });
 
   };

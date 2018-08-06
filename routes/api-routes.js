@@ -102,4 +102,29 @@ module.exports = function(app)
     }
   });
 
+  // DELETE route for deleting posts
+  app.delete("/api/posts/:id", function(req, res) {
+    console.log("delete: "+req.params)
+    db.Save.destroy({
+      where: {
+        recId: req.body.id
+      }
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  // // Get all specific user's saves
+  // app.get("/api/saved/id/:recId", function(req, res) {
+  //   db.Save.findAll({
+  //     where: {
+  //       //UserId: req.params.id,
+  //       recId: req.params.recId
+  //     }
+  //   })
+  //   .then(function(dbSaved) {
+  //     res.json(dbSaved);
+  //   });
+  // });
+
 };
