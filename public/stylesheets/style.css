@@ -1,5 +1,6 @@
 /*favorite styling*/
-#content  {
+#content
+ {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -7,24 +8,33 @@
      text-shadow: 2px 2px 8px #000000;
      padding:0px;
 }
-
+#delcontent
+ {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+     z-index: 10;
+     text-shadow: 2px 2px 8px #ffffff;
+     padding:0px;
+}
 i.fav-icon
 {
-
     color: #b71c1c;
     z-index: 11;
+}
 
+i.deleteRec
+{
+    color: #424242;
+    z-index: 11;
 }
 
 form.signup,
-form.login {
-  margin-top: 50px;
-}
+form.login
+{  margin-top: 50px;}
 
 .navbar-default
-{
-  background-color: #557280;
-}
+{  background-color: #557280;}
 
 #password, #email
 {
@@ -156,7 +166,7 @@ background-color: transparent;
   background-size: cover;
   margin-bottom: 0px;
   padding: 15px 0 0 15px;
-  .row 
+  .row
   {
   margin-bottom: 0;
   }

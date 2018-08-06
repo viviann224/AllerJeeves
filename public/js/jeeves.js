@@ -61,7 +61,7 @@ function makeCards(url, recipeSource)
     if(count>0)
     {
 
-    let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[];
+    let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[], recIdArr=[];
 
     let yummlySource="https://www.yummly.com/recipe/";
 
@@ -71,6 +71,7 @@ function makeCards(url, recipeSource)
           recipeArray.push(yummlySource + newObj[i].id);
           idArray.push(newObj[i].id);
           imageArray.push(newObj[i].imageUrlsBySize[90]);
+          recIdArr.push(newObj[i].id)
 
           //for loop for specific formatting for specific ingredient
           for(var x=0;x<newObj[i].ingredients.length;x++)
@@ -94,6 +95,8 @@ function makeCards(url, recipeSource)
           img: imageArray,
           ingList: ingredArray,
           title: titleArray,
+          recId:recIdArr
+
 
         };
 
@@ -111,12 +114,14 @@ function makeCards(url, recipeSource)
 function createCards(Cards)
 {
   // initiate another for loop to create dynamic elements to display properties for each recipe card
-  //Cards.id.length
-  for( let i=0;i<15 &&i<Cards.img.length;i++)
+  var length=15;
+  if(Cards.img.length>15)
+  { length=Cards.img.length;}
+  for( let i=0;i<length &&i<Cards.img.length;i++)
   {
     //creates card
     let cardBody=$('<div class="card sticky-action hoverable">');
-    let favImg=$('<div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
+    let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div><div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
     cardBody.append(favImg);
 
 

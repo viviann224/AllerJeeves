@@ -9,14 +9,14 @@ $(document).ready(function()
     $(".member-name").text(data.username);
 
     //saves a new card as a favorite for user
-    function saveCard( event)
+    function saveCard(event)
     {
       event.preventDefault();
       var myId=data.id;
       var title=$(this).parent().find("span")[0].textContent;
       var url=$(this).parent().find("p")[1];
-
        $(this).addClass("saved");
+
        //create a newsaved object
         var newSave =
         {
@@ -27,24 +27,17 @@ $(document).ready(function()
           recTitle:title.replace("more_vert", ""),
           UserId: myId
         };
-
-        //newSave.UserId =myId;
         console.log(newSave);
 
         $.post("/api/save",newSave, function()
-        {
-          console.log("datastored");
-        });
+        {  console.log("datastored");});
     }
 
-    $(document).on("click", "#content", saveCard);
-
-    //function to display user's current favorited cards
-    $(".savedRec").on("click", function(event)
+    //function to display member's favorite recipe
+    function displayCard()
     {
-        //alert("clicked");
-        $.get("/api/saved/" + data.id, function(data)
-        {
+      $.get("/api/saved/" + data.id, function(data)
+      {
         console.log("users favorites", data);
         $(".outputArea").empty();
         var userFav = data;
@@ -58,6 +51,7 @@ $(document).ready(function()
           var titleArr=[];
           var listArr=[];
           var urlArr=[];
+          var recIdArr=[]
 
           for(var x=0;x<data.length;x++)
           {
@@ -65,21 +59,52 @@ $(document).ready(function()
             titleArr.push( data[x].recTitle);
             listArr.push (data[x].recIngList);
             urlArr.push(data[x].recUrl);
+            recIdArr.push(data[x].recId);
           }
           var UsersCards =
           {
             img:imgArr,
             title:titleArr,
             ingList:listArr,
-            url:urlArr
+            url:urlArr,
+            recId:recIdArr
           }
           console.log(UsersCards);
 
           createCards(UsersCards);
           $(".lean-overlay").attr("display", "show");
         }
-      });
     });
+    }
+
+
+    $(document).on("click", ".deleteRec", deleteRecipe);
+
+    // $(document).on("click", ".deleteRec", deleteRecipe($(this).value()));
+    //   //delete favorite recipe
+    //   // This function does an API call to delete posts
+    function deleteRecipe(event)
+    {
+    event.preventDefault();
+    //alert("delete!"+$(this).val().trim());
+    var recId=$(this).attr("value");
+    console.log(deleteId);
+    //   // $.ajax({
+    //   //   method: "DELETE",
+    //   //   url: "/api/posts/" + recId
+    //   // })
+    //   // .then(function() {
+    //   //   getPosts(postCategorySelect.val());
+    //   // });
+    }
+
+    $(document).on("click", "#content", saveCard);
+
+    //function to display user's current favorited cards
+    $(".savedRec").on("click", function(event)
+    {    displayCard();});
+
+
 
   });
   //enable modals to run
