@@ -1,8 +1,12 @@
+//if the user is not in the favorites set the flag to false
+//true if the user is in the favorites section
+var isFave=false;
 // call function when submit button is pressed
  var submitReq = function(event)
 {
   // prevent page refresh when submit is pressed
   event.preventDefault();
+
   // website url for ajax to pull from
   const recipeSource = "https://api.yummly.com/v1/api/recipes";
   //api id and key
@@ -25,6 +29,13 @@
   //console.log(myCard);
 
 };
+
+//function to display user's current favorited cards
+$(".savedRec").on("click", function(event)
+{
+  isFave=true;
+
+});
 //code for specific recipe info
 //var recipeURL="https://api.yummly.com/v1/api/recipe/"+"Funnel-Cakes-1580470"+"?_app_id="+ appId+"&_app_key="+ appKey;
 
@@ -122,8 +133,21 @@ function createCards(Cards)
     //creates card
     let cardBody=$('<div class="card sticky-action hoverable">');
     if(isLogged)
-    {let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div><div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
-    cardBody.append(favImg);}
+    {
+      if(isFave)
+      {
+        console.log("isFave "+ isFave);
+        let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div>');
+        cardBody.append(favImg);
+      }
+      else {
+        {
+          let favImg=$('<div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
+          cardBody.append(favImg);
+        }
+
+      }
+  }
 
 
     //stores img
@@ -193,7 +217,8 @@ function getAllergy()
 }
 
 //trigger button click on enter key
-$("input").keypress(function() {
+$("input").keypress(function()
+{
     if (event.which == 13)
     {
       submitReq(event);

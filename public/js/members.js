@@ -1,6 +1,7 @@
 $(document).ready(function()
 {
   isLogged=true;
+  var isFave=false;
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data)
@@ -79,6 +80,10 @@ $(document).ready(function()
         }
     });
     }
+    // function isSaved()
+    // {
+    //   return isFave =true;
+    // }
 
 
 
@@ -113,11 +118,14 @@ $(document).ready(function()
     //function to display user's current favorited cards
     $(".savedRec").on("click", function(event)
     {
+      isFave=true;
 
        displayCard();
 
 
     });
+
+
 
 
 
