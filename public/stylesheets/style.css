@@ -34,6 +34,12 @@ i.deleteRec
     z-index: 11;
 }
 
+.social:hover
+{
+  font-weight: bold !important;
+  color: #607d8b !important;
+}
+
 form.signup,
 form.login
 {  margin-top: 50px;}
