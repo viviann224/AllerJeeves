@@ -34,7 +34,7 @@ $(document).ready(function()
           UserId: myId
         };
         //console.log(newSave);
-        $.post("/api/save",newSave, function()
+        $.post("/api/save", newSave, function()
         {  console.log("datastored");});
     }
 
@@ -43,7 +43,7 @@ $(document).ready(function()
     {
       $.get("/api/saved/" + data.id, function(data)
       {
-        console.log("users favorites", data);
+        //console.log("users favorites", data);
         $(".outputArea").empty();
         var userFav = data;
         if (!userFav || !userFav.length)
@@ -91,7 +91,7 @@ $(document).ready(function()
       isSaved=false;
       //alert("delete!"+$(this).val().trim());
       var deleteId=$(this).attr("value");
-      console.log(deleteId);
+      // console.log(deleteId);
       var deleteObj=
       {
         id:deleteId
@@ -104,9 +104,9 @@ $(document).ready(function()
         data: deleteObj
       }).then(function()
       {
-        console.log("isLogged " +isLogged)
-        console.log("isSaved " +isSaved)
-        console.log("isDelete " +isDelete)
+        // console.log("isLogged " +isLogged)
+        // console.log("isSaved " +isSaved)
+        // console.log("isDelete " +isDelete)
          displayCard();
         //isHeart=false;
       });
@@ -120,9 +120,9 @@ $(document).ready(function()
     {
       isSaved=false;
       isDelete=true;
-      console.log("isLogged " +isLogged)
-      console.log("isSaved " +isSaved)
-      console.log("isDelete " +isDelete)
+      // console.log("isLogged " +isLogged)
+      // console.log("isSaved " +isSaved)
+      // console.log("isDelete " +isDelete)
       //isHeart=false;
        displayCard();
     });

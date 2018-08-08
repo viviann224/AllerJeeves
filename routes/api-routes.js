@@ -69,7 +69,8 @@ module.exports = function(app)
       recTitle: req.body.recTitle,
       recIngList: req.body.recIngList,
       UserId:req.body.UserId
-    }).then(function() {
+    }).then(function()
+    {
       //tell user acct created
       //res.redirect(307, "/api/login");
     }).catch(function(err) {

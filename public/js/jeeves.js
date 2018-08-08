@@ -10,9 +10,9 @@ var isDelete=false;
   event.preventDefault();
   isSaved=true;
   isDelete=false;
-  console.log("isLogged " +isLogged)
-  console.log("isSaved " +isSaved)
-  console.log("isDelete " +isDelete)
+  // console.log("isLogged " +isLogged)
+  // console.log("isSaved " +isSaved)
+  // console.log("isDelete " +isDelete)
   //var isFave=false;
   // website url for ajax to pull from
   const recipeSource = "https://api.yummly.com/v1/api/recipes";
@@ -144,7 +144,7 @@ function createCards(Cards)
       if(!isDelete&&isSaved)
       {
 
-        let favImg=$('<div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
+        let favImg=$('<div id="content"><i class="waves-effect material-icons right fav-icon hoverable">favorite</i></div>');
         cardBody.append(favImg);
 
       }
@@ -152,7 +152,7 @@ function createCards(Cards)
       {
 
         //console.log("isFave "+ isFave);
-        let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div>');
+        let favImg=$('<div id="delcontent"><i class="hoverable material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div>');
         cardBody.append(favImg);
 
 
@@ -237,6 +237,7 @@ $("input").keypress(function()
       submitReq(event);
     }
 });
+
 
 $('#inputBtn').click(submitReq);
 // var input = document.getElementById("input_text");

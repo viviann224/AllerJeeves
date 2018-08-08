@@ -9,6 +9,8 @@
      text-shadow: 2px 2px 8px #000000;
      padding:0px;
 }
+
+
 #delcontent
  {
    display:block;
@@ -24,6 +26,7 @@ i.fav-icon
     color: #b71c1c;
     z-index: 11;
 }
+
 
 i.deleteRec
 {
