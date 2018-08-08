@@ -1,12 +1,19 @@
-//if the user is not in the favorites set the flag to false
+////if the user is not in the favorites set the flag to false
 //true if the user is in the favorites section
-var isFave=false;
+//var isFave=false;
+var isSaved=false;
+var isDelete=false;
 // call function when submit button is pressed
  var submitReq = function(event)
 {
   // prevent page refresh when submit is pressed
   event.preventDefault();
-
+  isSaved=true;
+  isDelete=false;
+  console.log("isLogged " +isLogged)
+  console.log("isSaved " +isSaved)
+  console.log("isDelete " +isDelete)
+  //var isFave=false;
   // website url for ajax to pull from
   const recipeSource = "https://api.yummly.com/v1/api/recipes";
   //api id and key
@@ -27,23 +34,22 @@ var isFave=false;
   //calls myCards to get 12 recipes to Object
    makeCards(myURL,recipeSource );
   //console.log(myCard);
-
 };
 
 //function to display user's current favorited cards
 $(".savedRec").on("click", function(event)
 {
-  isFave=true;
+  //isFave=true;
 
 });
 //code for specific recipe info
 //var recipeURL="https://api.yummly.com/v1/api/recipe/"+"Funnel-Cakes-1580470"+"?_app_id="+ appId+"&_app_key="+ appKey;
 
+//function to clear the user input for ingredient
 function clearSearch()
-{
-  $("#input_text").val('');
-}
+{  $("#input_text").val('');}
 
+//function to create url for ajax request
 function getCards(ingr, allergy, diet, source, id, key)
 {
   var userInput= ingr+allergy+diet;
@@ -51,34 +57,36 @@ function getCards(ingr, allergy, diet, source, id, key)
   return myURL;
 }
 
+//passes in url and recipe source url to preform ajax request to make cards
 function makeCards(url, recipeSource)
 {
   //clears out the cards before making a new request.
     $(".outputArea").empty();
   //calling the ajax class to pass the url, and the
   //GET method to return the myObj object
-  $.ajax({
-    url: url,
-    method: "GET"
-    //once myObj object returns, pass in myObj to the next function
-  }).then(function(myObj) {
-
-    let newObj = myObj.matches;
-        //console.log(newObj);
-
-    // set the count value to the count property in the object
-    let count = newObj.length;
-
-    if(count>0)
+    $.ajax({
+      url: url,
+      method: "GET"
+      //once myObj object returns, pass in myObj to the next function
+    }).then(function(myObj)
     {
 
-    let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[], recIdArr=[];
+      let newObj = myObj.matches;
+      //console.log(newObj);
+      // set the count value to the count property in the object
+      let count = newObj.length;
 
-    let yummlySource="https://www.yummly.com/recipe/";
+      if(count>0)
+      {
 
-    // initiate a for loop to store recipe_id property and image_url property into their arrays
-    //change to count later..
-        for (var i = 0; i < count; i++) {
+        let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[], recIdArr=[];
+
+        let yummlySource="https://www.yummly.com/recipe/";
+
+        // initiate a for loop to store recipe_id property and image_url property into their arrays
+        //change to count later..
+        for (var i = 0; i < count; i++)
+        {
           recipeArray.push(yummlySource + newObj[i].id);
           idArray.push(newObj[i].id);
           imageArray.push(newObj[i].imageUrlsBySize[90]);
@@ -94,9 +102,10 @@ function makeCards(url, recipeSource)
         }
 
         // create a for-loop to pull, resize, and reassign photos back into the imageArray followed by another interation to replace all http with https...so they all match through out page.
-        for (var j = 0; j < imageArray.length; j++) {
-          imageArray[j] = imageArray[j].toString().replace("s90", "s500");
-          imageArray[j] = imageArray[j].toString().replace("http://", "https://");
+        for (var j = 0; j < imageArray.length; j++)
+        {
+            imageArray[j] = imageArray[j].toString().replace("s90", "s500");
+            imageArray[j] = imageArray[j].toString().replace("http://", "https://");
         }
 
         var Cards =
@@ -107,8 +116,6 @@ function makeCards(url, recipeSource)
           ingList: ingredArray,
           title: titleArray,
           recId:recIdArr
-
-
         };
 
         if(Cards.url.length>0)
@@ -119,9 +126,9 @@ function makeCards(url, recipeSource)
         //appends the card to html
         $(".outputArea").append("<p><h3>I am sorry we cannot find your search in our database. Please search again</h3></p>");
       }
-    //return Cards;
-  });
+    });
 }
+
 function createCards(Cards)
 {
   // initiate another for loop to create dynamic elements to display properties for each recipe card
@@ -134,20 +141,25 @@ function createCards(Cards)
     let cardBody=$('<div class="card sticky-action hoverable">');
     if(isLogged)
     {
-      if(isFave)
+      if(!isDelete&&isSaved)
       {
-        console.log("isFave "+ isFave);
-        let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div>');
+
+        let favImg=$('<div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
         cardBody.append(favImg);
-      }
-      else {
-        {
-          let favImg=$('<div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
-          cardBody.append(favImg);
-        }
 
       }
-  }
+      else if(!isSaved&&isDelete)
+      {
+
+        //console.log("isFave "+ isFave);
+        let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div>');
+        cardBody.append(favImg);
+
+
+      }
+      // let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div><div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
+      // cardBody.append(favImg);
+    }
 
 
     //stores img
@@ -174,9 +186,10 @@ function createCards(Cards)
     cardBackHolder.append(cardUrl);
     //appends the card to html
     $(".outputArea").append(cardBody);
+
   }
 }
-
+//function to grab ingredient request from user input
 function getIngre()
 {
   //ingredient input is default to tofu unless user updates.
@@ -185,7 +198,7 @@ function getIngre()
   { ingr= $("#input_text").val().trim();}
   return ingr;
 }
-
+//function to get the dietary restrictions
 function getDiet()
 {
   //starting format for concatination for diret restrictions
@@ -200,7 +213,7 @@ function getDiet()
   });
   return dietRequest;
 }
-
+//function to get the allergy restrictions
 function getAllergy()
 {
   //starting format for concatination for allergy restrictions
@@ -237,6 +250,8 @@ $('#inputBtn').click(submitReq);
 //         document.getElementById("inputBtn").click();
 //     }
 // });
+
+
 
 //top button
 $(".fixed-action-btn").click(function()

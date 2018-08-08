@@ -1,12 +1,16 @@
 $(document).ready(function()
 {
+
   isLogged=true;
-  var isFave=false;
+
+
+  //isHeart=true;
+  //var isFave=false;
   // This file just does a GET request to figure out which user is logged in
   // and updates the HTML on the page
   $.get("/api/user_data").then(function(data)
   {
-    console.log(data);
+    //console.log(data);
     //displays a welcome greeting to login user
     $(".member-name").text(data.username);
 
@@ -29,10 +33,7 @@ $(document).ready(function()
           recTitle:title.replace("more_vert", ""),
           UserId: myId
         };
-        console.log(newSave);
-
-
-
+        //console.log(newSave);
         $.post("/api/save",newSave, function()
         {  console.log("datastored");});
     }
@@ -73,61 +74,77 @@ $(document).ready(function()
             url:urlArr,
             recId:recIdArr
           }
-          console.log(UsersCards);
-
+          //console.log(UsersCards);
           createCards(UsersCards);
           $(".lean-overlay").attr("display", "show");
         }
-    });
+      });
     }
-    // function isSaved()
-    // {
-    //   return isFave =true;
-    // }
 
-
-
+    //on click event to delete favorite recipe
     $(document).on("click", ".deleteRec", deleteRecipe);
-
-    // $(document).on("click", ".deleteRec", deleteRecipe($(this).value()));
-    //   //delete favorite recipe
-    //   // This function does an API call to delete posts
+    //This function does an API call to delete posts
     function deleteRecipe(event)
     {
-    event.preventDefault();
-    //alert("delete!"+$(this).val().trim());
-    var deleteId=$(this).attr("value");
-    console.log(deleteId);
-    var deleteObj=
-    {
-      id:deleteId
-    }
-    var id=data.id
+      event.preventDefault();
+      isDelete=true;
+      isSaved=false;
+      //alert("delete!"+$(this).val().trim());
+      var deleteId=$(this).attr("value");
+      console.log(deleteId);
+      var deleteObj=
+      {
+        id:deleteId
+      }
+      var id=data.id;
+
       $.ajax({
         method: "DELETE",
         url: "/api/posts/" + id,
         data: deleteObj
-      })
-      .then(function() {
-        displayCard();
+      }).then(function()
+      {
+        console.log("isLogged " +isLogged)
+        console.log("isSaved " +isSaved)
+        console.log("isDelete " +isDelete)
+         displayCard();
+        //isHeart=false;
       });
     }
 
+    //if a user clicks likes go ahead and save the recipe to favorites
     $(document).on("click", "#content", saveCard);
 
     //function to display user's current favorited cards
     $(".savedRec").on("click", function(event)
     {
-      isFave=true;
-
+      isSaved=false;
+      isDelete=true;
+      console.log("isLogged " +isLogged)
+      console.log("isSaved " +isSaved)
+      console.log("isDelete " +isDelete)
+      //isHeart=false;
        displayCard();
-
-
     });
 
-
-
-
+    // $(".inputBtn").on("click", function(event)
+    // {
+    //   //isHeart=true;
+    //   //isSearch=true;
+    //   submitReq()
+    //
+    //   console.log("isSearch"+isSearch)
+    //
+    // });
+    // //trigger button click on enter key
+    // $("input").keypress(function()
+    // {
+    //   //isSearch=true;
+    //     if (event.which == 13)
+    //     {
+    //       submitReq(event);
+    //     }
+    // });
 
   });
   //enable modals to run
@@ -135,13 +152,9 @@ $(document).ready(function()
 
   // //when user clicks login close current modal then open login modal
    $("#about").click(function()
-   {
-     $("#aboutModal").openModal();
-   });
+   {   $("#aboutModal").openModal();});
 
    // //when user clicks login close current modal then open login modal
     $("#close").click(function()
-    {
-      $(".lean-overlay").hide();
-    });
+    {  $(".lean-overlay").hide();});
 });

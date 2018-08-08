@@ -4,7 +4,8 @@
 // Creating our User model
 module.exports = function(sequelize, DataTypes)
 {
-  var Save = sequelize.define("Save", {
+  var Save = sequelize.define("Save",
+  {
     recUrl:{
       type: DataTypes.STRING,
       allowNull: false,
