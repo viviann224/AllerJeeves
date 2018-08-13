@@ -8,7 +8,7 @@ $(document).ready(function()
     //alert("logging out");
     $.get("/logout", function(res)
     {
-      alert("logging out");
+      //alert("logging out");
       return res;
     });
 
@@ -18,8 +18,8 @@ $(document).ready(function()
   {
     $.get("/logout", function(res)
     {
-      alert("logging out");
       return res;
     });
   }
+
 });

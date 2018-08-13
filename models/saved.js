@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes)
     recId:{
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     recImg:{
       type: DataTypes.STRING,

@@ -1,8 +1,7 @@
-////if the user is not in the favorites set the flag to false
-//true if the user is in the favorites section
-//var isFave=false;
+//sets default values for isSaved and isDelete
 var isSaved=false;
 var isDelete=false;
+
 // call function when submit button is pressed
  var submitReq = function(event)
 {
@@ -10,10 +9,6 @@ var isDelete=false;
   event.preventDefault();
   isSaved=true;
   isDelete=false;
-  // console.log("isLogged " +isLogged)
-  // console.log("isSaved " +isSaved)
-  // console.log("isDelete " +isDelete)
-  //var isFave=false;
   // website url for ajax to pull from
   const recipeSource = "https://api.yummly.com/v1/api/recipes";
   //api id and key
@@ -28,20 +23,12 @@ var isDelete=false;
   var myAllergy = getAllergy().trim();
   //calls getCards to get 12 recipe suggestions
   var myURL=getCards(myIngr, myAllergy, myDiet, recipeSource, appId, appKey).trim();
-  console.log(myURL);
+
   //once search complete clear search for next search
   clearSearch();
   //calls myCards to get 12 recipes to Object
    makeCards(myURL,recipeSource );
-  //console.log(myCard);
 };
-
-//function to display user's current favorited cards
-$(".savedRec").on("click", function(event)
-{
-  //isFave=true;
-
-});
 //code for specific recipe info
 //var recipeURL="https://api.yummly.com/v1/api/recipe/"+"Funnel-Cakes-1580470"+"?_app_id="+ appId+"&_app_key="+ appKey;
 
@@ -61,7 +48,7 @@ function getCards(ingr, allergy, diet, source, id, key)
 function makeCards(url, recipeSource)
 {
   //clears out the cards before making a new request.
-    $(".outputArea").empty();
+  $(".outputArea").empty();
   //calling the ajax class to pass the url, and the
   //GET method to return the myObj object
     $.ajax({
@@ -70,15 +57,12 @@ function makeCards(url, recipeSource)
       //once myObj object returns, pass in myObj to the next function
     }).then(function(myObj)
     {
-
       let newObj = myObj.matches;
-      //console.log(newObj);
       // set the count value to the count property in the object
       let count = newObj.length;
 
       if(count>0)
       {
-
         let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[], recIdArr=[];
 
         let yummlySource="https://www.yummly.com/recipe/";
@@ -140,32 +124,20 @@ function createCards(Cards)
     //creates card
     let cardBody=$('<div class="card sticky-action hoverable">');
     if(isLogged)
-    {
+    { //if two cond met, display favorite icon
       if(!isDelete&&isSaved)
       {
-
         let favImg=$('<div id="content"><i class="waves-effect material-icons right fav-icon hoverable">favorite</i></div>');
         cardBody.append(favImg);
-
-      }
+      }//if two cond met, display delete icon
       else if(!isSaved&&isDelete)
       {
-
-        //console.log("isFave "+ isFave);
         let favImg=$('<div id="delcontent"><i class="hoverable material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div>');
         cardBody.append(favImg);
-
-
       }
-      // let favImg=$('<div id="delcontent"><i class="material-icons left fav-icon deleteRec" value="'+Cards.recId[i]+'">delete</i></div><div id="content"><i class="material-icons right fav-icon">favorite</i></div>');
-      // cardBody.append(favImg);
     }
-
-
     //stores img
     let cardImg=$('<img class="activator" src="'+ Cards.img[i]+'" ></div>');
-//cardImg.append(favImg);
-//favorite
     //stores the title on backside
     let titleBack=$('<span class="card-title grey-text text-darken-4">'+Cards.title[i]+'<i class="material-icons right">close</i></span>');
     //stores backside info
@@ -176,7 +148,6 @@ function createCards(Cards)
     let cardImgHolder=$('<div class="card-image waves-effect waves-block waves-light" id="img'+i+'">');
     cardBody.append(cardImgHolder);
     cardImgHolder.append(cardImg);
-
     cardBody.append('<div class="card-content"><span class="card-title activator grey-text text-darken-4 flow-text truncate"><i class="material-icons right">more_vert</i>'+ Cards.title[i]+'</span></div>');
     //create card back and store title, backinfo, and url
     let cardBackHolder=$('<div class="card-reveal">');
@@ -186,9 +157,9 @@ function createCards(Cards)
     cardBackHolder.append(cardUrl);
     //appends the card to html
     $(".outputArea").append(cardBody);
-
   }
 }
+
 //function to grab ingredient request from user input
 function getIngre()
 {
@@ -198,6 +169,7 @@ function getIngre()
   { ingr= $("#input_text").val().trim();}
   return ingr;
 }
+
 //function to get the dietary restrictions
 function getDiet()
 {
@@ -213,6 +185,7 @@ function getDiet()
   });
   return dietRequest;
 }
+
 //function to get the allergy restrictions
 function getAllergy()
 {
@@ -233,30 +206,31 @@ function getAllergy()
 $("input").keypress(function()
 {
     if (event.which == 13)
-    {
-      submitReq(event);
-    }
+    {    submitReq(event);}
 });
 
-
 $('#inputBtn').click(submitReq);
-// var input = document.getElementById("input_text");
-// input.addEventListener("keyup", function(event)
-// {
-//
-//     event.preventDefault();
-//     alert("entered!");
-//     if (event.keyCode === 13)
-//     {
-//         document.getElementById("inputBtn").click();
-//     }
-// });
-
-
 
 //top button
 $(".fixed-action-btn").click(function()
 {
-$("html, body").animate({ scrollTop: 0 }, "slow");
-return false;
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
+
+$(".loginInBtn").click(function()
+{
+  // prevent page refresh when submit is pressed
+  event.preventDefault();
+  $(location).attr('href',"/login");
+
+});
+
+
+$(".logOutBtn").click(function()
+{
+  // prevent page refresh when submit is pressed
+  event.preventDefault();
+  $(location).attr('href',"/logout");
+
 });

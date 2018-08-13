@@ -37,10 +37,12 @@ module.exports = function(app)
   app.get("/api/saved", function(req, res) {
     var query = {};
     if (req.query.UserId) {
+
       query.UserId = req.query.id;
     }
     db.Save.findAll({
-      where: query
+      where: query,
+      order: [ ['updatedAt', 'DESC'] ]
     }).then(function(dbSaved) {
       res.json(dbSaved);
     });
@@ -101,6 +103,20 @@ module.exports = function(app)
         id: req.user.id
       });
     }
+  });
+
+  // GET route for getting all of the posts
+  app.get("/api/posts", function(req, res)
+  {
+    var query = {};
+    if (req.query.author_id) {
+      query.AuthorId = req.query.author_id;
+    }
+    db.Post.findAll({
+      where: query
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // DELETE route for deleting posts

@@ -24,9 +24,9 @@ $(document).ready(function()
       var emailInput = $("input#newemail-input").val().trim();
       var passwordInput = $("input#newpassword-input").val().trim();
 
-      console.log(userInput);
-      console.log(emailInput);
-      console.log(passwordInput);
+      // console.log(userInput);
+      // console.log(emailInput);
+      // console.log(passwordInput);
 
      var userData =
      {
@@ -42,9 +42,12 @@ $(document).ready(function()
 
          // If we have an email and password, run the signUpUser function
          signUpUser(userData.username, userData.email, userData.password);
-         userInput.val("");
-         emailInput.val("");
-         passwordInput.val("");
+         //userInput.val("");
+         $("input#newusername-input").val("");
+         $("input#newemail-input").val("");
+         $("input#newpassword-input").val("");
+         //emailInput.val("");
+         //passwordInput.val("");
        });
 
 

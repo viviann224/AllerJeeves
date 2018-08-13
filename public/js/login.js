@@ -22,8 +22,8 @@ $(document).ready(function()
       var emailInput= $("input#email-input").val().trim();
       var passwordInput= $("input#password-input").val().trim();
 
-      console.log(emailInput);
-      console.log(passwordInput);
+      // console.log(emailInput);
+      // console.log(passwordInput);
 
         var userData = {
           email: emailInput,
