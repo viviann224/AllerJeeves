@@ -28,10 +28,17 @@ module.exports = function(app)
       res.redirect(307, "/api/login");
     }).catch(function(err) {
       console.log(err);
-    
+
+      //res.status(422).json(err.errors[0].message);
+
+
       //M.toast(err.responseJSON)
+      //alert("invalid email");
+      //return false;
       //res.json(err);
-      // res.status(422).json(err.errors[0].message);
+
+      //res.status(422).json(err.errors[0].message);
+      res.redirect(307, "/signup");
     });
   });
   //get all from database
@@ -64,6 +71,7 @@ module.exports = function(app)
 
   //add a save to user
   app.post("/api/save", function(req, res) {
+
     console.log(req.body);
     db.Save.create({
       recId:req.body.recId,

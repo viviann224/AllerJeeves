@@ -43,9 +43,16 @@ $(document).ready(function()
          // If we have an email and password, run the signUpUser function
          signUpUser(userData.username, userData.email, userData.password);
          //userInput.val("");
-         $("input#newusername-input").val("");
-         $("input#newemail-input").val("");
-         $("input#newpassword-input").val("");
+         // if($("input#newemail-input").val() !="")
+         // {
+         //
+         //   $("input#newusername-input").val("");
+         //   $("input#newemail-input").val("");
+         //   $("input#newpassword-input").val("");
+         // }
+         // $("input#newusername-input").val("");
+         // $("input#newemail-input").val("");
+         // $("input#newpassword-input").val("");
          //emailInput.val("");
          //passwordInput.val("");
        });
@@ -62,15 +69,20 @@ $(document).ready(function()
        email: email,
        password: password
      }).then(function(data) {
+
        window.location.replace(data);
 
        // If there's an error, handle it by throwing up a boostrap alert
      }).catch(function(err) {
        $("form.signup").append("<p class='errorMsg'>Invalid email. Please try again<p>");
-       M.toast(err.responseJSON)
+       $("input#newusername-input").val("");
+       $("input#newemail-input").val("");
+       $("input#newpassword-input").val("");
+       //M.toast(err.responseJSON)
        //console.log(err);
 
      });
+
    }
 
    function handleLoginErr(err) {
@@ -79,7 +91,14 @@ $(document).ready(function()
      //$("#alert").fadeIn(500);
    }
 
-   
+   //enable modals to run
+   //$('.modal-trigger').leanModal();
+
+  //  //when user clicks login close current modal then open login modal
+  //   $("#about").click(function()
+  //   {   $("#aboutModal").openModal();
+  // });
+
 
    // //when user clicks login close current modal then open login modal
    //  $("#clickSignup").click(function()
