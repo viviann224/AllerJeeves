@@ -63,14 +63,23 @@ $(document).ready(function()
        password: password
      }).then(function(data) {
        window.location.replace(data);
+
        // If there's an error, handle it by throwing up a boostrap alert
-     }).catch(handleLoginErr);
+     }).catch(function(err) {
+       $("form.signup").append("<p class='errorMsg'>Invalid email. Please try again<p>");
+       M.toast(err.responseJSON)
+       //console.log(err);
+
+     });
    }
 
    function handleLoginErr(err) {
-     $("#alert .msg").text(err.responseJSON);
-     $("#alert").fadeIn(500);
+     //M.toast(err.responseJSON)
+     //$("#alert .msg").text(err.responseJSON);
+     //$("#alert").fadeIn(500);
    }
+
+   
 
    // //when user clicks login close current modal then open login modal
    //  $("#clickSignup").click(function()

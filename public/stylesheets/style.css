@@ -39,6 +39,12 @@ i.deleteRec
   color: #607d8b !important;
 }
 
+/*login error styling*/
+.errorMsg
+{
+  color:red;
+
+}
 form.signup,
 form.login
 {  margin-top: 50px;}

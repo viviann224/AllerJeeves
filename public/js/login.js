@@ -50,9 +50,8 @@ $(document).ready(function()
             // If there's an error, log the error
 
           }).catch(function(err) {
-            console.log("invalid pw");
-            $("form.login").append("<br>Invalid login. Please try again");
-            console.log(err);
+            $("form.login").append("<p class='errorMsg'>Invalid login. Please try again<p>");
+            //console.log(err);
 
           });
         }
@@ -68,6 +67,14 @@ $(document).ready(function()
     {
       $("#loginModal").closeModal();
       $("#signupModal").openModal();
+
+    });
+
+    $(".signupBtn").click(function()
+    {
+      // prevent page refresh when submit is pressed
+      event.preventDefault();
+      $(location).attr('href',"/signup");
 
     });
 
