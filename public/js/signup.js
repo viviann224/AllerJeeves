@@ -1,32 +1,14 @@
 $(document).ready(function()
 {
-  //enable modals to run
-  //turning off
-  //$('.modal-trigger').leanModal();
-
-  //when user clicks login close current modal then open login modal
-   $("#clickLogin").click(function()
-   {
-     $("#signupModal").closeModal();
-     $("#loginModal").openModal();
-   });
-
-
-
    // When the signup button is clicked, we validate the email and password are not blank
    $("form.signup").submit(function(event)
    {
-
       event.preventDefault();
       // Getting references to our form and input
       var signUpForm = $("form.signup");
       var userInput =$("input#newusername-input").val().trim();
       var emailInput = $("input#newemail-input").val().trim();
       var passwordInput = $("input#newpassword-input").val().trim();
-
-      // console.log(userInput);
-      // console.log(emailInput);
-      // console.log(passwordInput);
 
      var userData =
      {
@@ -38,28 +20,9 @@ $(document).ready(function()
        if (!userData.email || !userData.password) {
          return;
        }
-
-
          // If we have an email and password, run the signUpUser function
          signUpUser(userData.username, userData.email, userData.password);
-         //userInput.val("");
-         // if($("input#newemail-input").val() !="")
-         // {
-         //
-         //   $("input#newusername-input").val("");
-         //   $("input#newemail-input").val("");
-         //   $("input#newpassword-input").val("");
-         // }
-         // $("input#newusername-input").val("");
-         // $("input#newemail-input").val("");
-         // $("input#newpassword-input").val("");
-         //emailInput.val("");
-         //passwordInput.val("");
        });
-
-
-
-
 
    // Does a post to the signup route. If succesful, we are redirected to the members page
    // Otherwise we log any errors
@@ -78,77 +41,6 @@ $(document).ready(function()
        $("input#newusername-input").val("");
        $("input#newemail-input").val("");
        $("input#newpassword-input").val("");
-       //M.toast(err.responseJSON)
-       //console.log(err);
-
      });
-
    }
-
-   function handleLoginErr(err) {
-     //M.toast(err.responseJSON)
-     //$("#alert .msg").text(err.responseJSON);
-     //$("#alert").fadeIn(500);
-   }
-
-   //enable modals to run
-   //$('.modal-trigger').leanModal();
-
-  //  //when user clicks login close current modal then open login modal
-  //   $("#about").click(function()
-  //   {   $("#aboutModal").openModal();
-  // });
-
-
-   // //when user clicks login close current modal then open login modal
-   //  $("#clickSignup").click(function()
-   //  {
-   //    $("#loginModal").closeModal();
-   //    $("#signupModal").openModal();
-   //
-   //  });
-
-    //char counter
-    //turningoff
-    //$('input#icon_prefix, textarea#textarea1').characterCounter();
-
-
-  // // Getting references to our form and input
-  // var signUpForm = $("form.signup");
-  // var emailInput = $("input#email-input");
-  // var passwordInput = $("input#password-input");
-  //
-  // // When the signup button is clicked, we validate the email and password are not blank
-  // signUpForm.on("submit", function(event) {
-  //   event.preventDefault();
-  //   var userData = {
-  //     email: emailInput.val().trim(),
-  //     password: passwordInput.val().trim()
-  //   };
-  //
-  //   if (!userData.email || !userData.password) {
-  //     return;
-  //   }
-  //   // If we have an email and password, run the signUpUser function
-  //   signUpUser(userData.email, userData.password);
-  //   emailInput.val("");
-  //   passwordInput.val("");
-  // });
-  //
-  // // Does a post to the signup route. If succesful, we are redirected to the members page
-  // // Otherwise we log any errors
-  // function signUpUser(email, password) {
-  //   $.post("/api/signup", {
-  //     email: email,
-  //     password: password
-  //   }).then(function(data) {
-  //     window.location.replace(data);
-  //     // If there's an error, handle it by throwing up a boostrap alert
-  //   }).catch(handleLoginErr);
-  // }
-  //
-  // function handleLoginErr(err) {
-  //   $("#alert .msg").text(err.responseJSON);
-  //   $("#alert").fadeIn(500);
-  // }
 });

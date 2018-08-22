@@ -1,6 +1,6 @@
 /*favorite styling*/
 #content
- {
+{
    display:block;
    position: absolute;
    top: 5px;
@@ -23,14 +23,14 @@
 
 i.fav-icon
 {
-    color: #b71c1c;
-    z-index: 11;
+  color: #b71c1c;
+  z-index: 11;
 }
 
 i.deleteRec
 {
-    color: #000000;
-    z-index: 11;
+  color: #000000;
+  z-index: 11;
 }
 
 .social:hover
@@ -41,12 +41,9 @@ i.deleteRec
 
 /*login error styling*/
 .errorMsg
-{
-  color:red;
+{  color:red;}
 
-}
-form.signup,
-form.login
+form.signup,form.login
 {  margin-top: 50px;}
 
 .navbar-default
@@ -75,7 +72,6 @@ form.login
 
 h5
 {
-	/* //font-size:1.2rem !important; */
 	line-height: 5% !important;
 	margin:5px !important;
 	font-weight: bold;
@@ -143,18 +139,16 @@ h5
 
     }
 
-  h2{
-    color:#3e3f3f !important;
-  }
+  h2
+  {    color:#3e3f3f !important;}
 
-  main {
-    flex: 1 0 auto;
-  }
+  main
+  {  flex: 1 0 auto;}
 
   /* // FIX SIDENAV SPACING */
-  .side-nav li>a {
-  padding: 0 16px;
-  }
+  .side-nav li>a
+  {  padding: 0 16px;}
+
   /* //FIX SIDEBAR DIVIDERS */
   .side-nav .divider {
   margin:0;
@@ -171,10 +165,9 @@ h5
     margin-bottom: 0px;
     padding: 15px 0 0 15px;
     .row
-    {
-    margin-bottom: 0;
-    }
-}
+    {  margin-bottom: 0;}
+  }
+
 .sidenav-footer
 {
   margin-bottom: 0px;

@@ -1,21 +1,21 @@
-// Requiring our models and passport as we've configured it
+// importing in models and passport
 var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function(app)
 {
-  // // Using the passport.authenticate middleware with our local strategy.
-  // // If the user has valid login credentials, send them to the members page.
-  // // Otherwise the user will be sent an error
+  // Using the passport.authenticate middleware with our local strategy.
+  // If the user logged in, send them to the members page.
+  // else user will stay on nonmembers page
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
-    // They won't get this or even be able to access this page if they aren't authed
+    //members only access for the members page
     res.json("/members");
   });
-  //
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+
+  // sign up route for user. The password is encrypted through the Sequelize
+  //User Model. If user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
@@ -28,21 +28,11 @@ module.exports = function(app)
       res.redirect(307, "/api/login");
     }).catch(function(err) {
       console.log(err);
-
-      //res.status(422).json(err.errors[0].message);
-
-
-      //M.toast(err.responseJSON)
-      //alert("invalid email");
-      //return false;
-      //res.json(err);
-
-      //res.status(422).json(err.errors[0].message);
       res.redirect(307, "/signup");
     });
   });
-  //get all from database
-  // GET route for getting all of the posts
+
+  // GET route for getting all of the favorites
   app.get("/api/saved", function(req, res) {
     var query = {};
     if (req.query.UserId) {
@@ -71,7 +61,6 @@ module.exports = function(app)
 
   //add a save to user
   app.post("/api/save", function(req, res) {
-
     console.log(req.body);
     db.Save.create({
       recId:req.body.recId,
@@ -84,20 +73,17 @@ module.exports = function(app)
     }).then(function()
     {
       //tell user acct created
-      //res.redirect(307, "/api/login");
     }).catch(function(err) {
       console.log(err);
       res.json(err);
-      // res.status(422).json(err.errors[0].message);
     });
   });
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
-
     res.redirect("/");
   });
-  //
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
@@ -105,8 +91,7 @@ module.exports = function(app)
       res.json({});
     }
     else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
+      // Otherwise send back the user's username, email, and id
       res.json({
         username:req.user.username,
         email: req.user.email,
@@ -115,21 +100,7 @@ module.exports = function(app)
     }
   });
 
-  // GET route for getting all of the posts
-  app.get("/api/posts", function(req, res)
-  {
-    var query = {};
-    if (req.query.author_id) {
-      query.AuthorId = req.query.author_id;
-    }
-    db.Post.findAll({
-      where: query
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-
-  // DELETE route for deleting posts
+  // DELETE route for deleting specific recipe
   app.delete("/api/posts/:id", function(req, res) {
     console.log("delete: "+req.params)
     db.Save.destroy({
@@ -140,7 +111,4 @@ module.exports = function(app)
       res.json(dbPost);
     });
   });
-
-
-
 };
