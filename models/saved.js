@@ -1,7 +1,6 @@
 // Requiring bcrypt for password hashing. Using the bcrypt-nodejs version as the regular bcrypt module
 // sometimes causes errors on Windows machines
-
-// Creating our User model
+// Creating our Save model
 module.exports = function(sequelize, DataTypes)
 {
   var Save = sequelize.define("Save",
@@ -30,16 +29,13 @@ module.exports = function(sequelize, DataTypes)
 
   });
 
-  //post association a book should belong to an author (for this instance)
-  Save.associate = function(models) {
-    // We're saying that a Post should belong to an Author
-    // A Post can't be created without an Author due to the foreign key constraint
+  //post association a Save belongs to a User
+  Save.associate = function(models)
+  {
+    // A Save can't be created without an User due to the foreign key constraint
     Save.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false,
-      }
-    });
+        foreignKey: { allowNull: false,}
+      });
   };
   return Save;
-
 };

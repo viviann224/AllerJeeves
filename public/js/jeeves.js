@@ -14,7 +14,6 @@ var isDelete=false;
   //api id and key
   const appId="87e47442";
   const appKey="11e4aadcc3dddb10fa26ae2968e1ce03"
-
   //calls getDiet to get dietary restrictions
   var myIngr= getIngre().trim();
   //calls getDiet to get dietary restrictions
@@ -226,11 +225,9 @@ $(".loginInBtn").click(function()
 
 });
 
-
 $(".logOutBtn").click(function()
 {
   // prevent page refresh when submit is pressed
   event.preventDefault();
   $(location).attr('href',"/logout");
-
 });

@@ -1,15 +1,10 @@
 $(document).ready(function()
 {
   isLogged=true;
-
-  // This file just does a GET request to figure out which user is logged in
-  // and updates the HTML on the page
+  //does a GET request to determine if user is logged and updates the HTML
   $.get("/api/user_data").then(function(data)
-  {
-    //console.log(data);
-    //displays a welcome greeting to login user
+  {//displays a welcome greeting to login user
     $(".member-name").text(data.username);
-
     //saves a new card as a favorite for user
     function saveCard(event)
     {
@@ -18,8 +13,7 @@ $(document).ready(function()
       var title=$(this).parent().find("span")[0].textContent;
       var url=$(this).parent().find("p")[1];
       $(this).addClass("saved");
-
-       //create a newsaved object
+      //create a newsaved object
       var newSave =
       {
         recUrl:url.getElementsByTagName('a')[0].getAttribute('href'),
@@ -29,7 +23,7 @@ $(document).ready(function()
         recTitle:title.replace("more_vert", ""),
         UserId: myId
       };
-
+      //using post request passing in the new obj to store into db
       $.post("/api/save", newSave, function()
       {  });
     }
@@ -66,7 +60,7 @@ $(document).ready(function()
             ingList:listArr,
             url:urlArr,
             recId:recIdArr
-          }
+          }//after collecting all the data, create cards and store the data passed by UsersCards
           createCards(UsersCards);
           $(".lean-overlay").attr("display", "show");
         }
@@ -108,13 +102,12 @@ $(document).ready(function()
     });
 
   });
-
   //enable modals to run
   $('.modal-trigger').leanModal();
 
   //when user clicks login close current modal then open login modal
    $("#about").click(function()
-   {   $("#aboutModal").openModal();});
+   {  $("#aboutModal").openModal();});
 
    //when user clicks login close current modal then open login modal
     $("#close").click(function()

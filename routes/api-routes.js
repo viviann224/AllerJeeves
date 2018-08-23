@@ -13,7 +13,6 @@ module.exports = function(app)
     //members only access for the members page
     res.json("/members");
   });
-
   // sign up route for user. The password is encrypted through the Sequelize
   //User Model. If user is created successfully, proceed to log the user in,
   // otherwise send back an error

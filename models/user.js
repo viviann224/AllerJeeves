@@ -34,12 +34,10 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    // Associating Author with Posts
-    // When an Author is deleted, also delete any associated Posts
-    //ref models.post / helps for later joins
-    //gives us methods and run assoication cool!
+    // Associating User with Save
+    // When an User is deleted, also delete any associated Saves
     User.hasMany(models.Save, {
-      //deleted asso post
+      //deleted associated Save
       onDelete: "cascade"
     });
   };
