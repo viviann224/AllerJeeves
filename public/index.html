@@ -5,8 +5,8 @@
       <meta name = "viewport" content = "width = device-width, initial-scale = 1">
       <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
       <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-     	<!--css sheet-->
-     	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+      <!--css sheet-->
+      <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
       <!-- jQuery -->
       <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <!-- materialize -->
@@ -171,11 +171,12 @@
  <!-- Welcome Modal Structure -->
   <div id="welcomeModal" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h5>Welcome to Aller-Jeeves</h5>
+      <h5>Welcome</h5>
       <div class="row">
         <form class="login">
+          <p>Welcome  to <strong>Aller-Jeeves</strong>!
         <p>To begin, input an ingredient with dietary or allergen restriction to find recipes for everyone to enjoy! </p>
-          <p class="center-align">Please <a href="/signup"><strong>Sign up</strong></a> or <a href="/login"><strong>Login</strong></a> to save recipes.</p>
+          <p class="center-align">Please <a href="/signup" class="social"><strong>Sign up</strong></a> or <a href="/login" class="social"><strong>Login</strong></a> to save recipes.</p>
 
           <p class="center-align"><strong>Non-members only have view access.</strong></p>
           
@@ -228,8 +229,6 @@
   // //when user clicks login close current modal then open login modal
     $("#welcomeClose").click(function()
     { $(".lean-overlay").hide();});
-
-
   </script>
   <script src="js/nav.js"></script>
   <script src="js/jeeves.js"></script>
