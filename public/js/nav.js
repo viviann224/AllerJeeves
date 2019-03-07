@@ -24,4 +24,5 @@ $(document).ready(function()
    // //when user clicks login close current modal then open login modal
     $("#close").click(function()
     { $(".lean-overlay").hide();});
+
 });

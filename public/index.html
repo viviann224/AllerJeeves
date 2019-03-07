@@ -168,7 +168,27 @@
  <div class="outputArea">
  </div>
 
-  <!-- Modal Structure -->
+ <!-- Welcome Modal Structure -->
+  <div id="welcomeModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h5>Welcome to Aller-Jeeves</h5>
+      <div class="row">
+        <form class="login">
+        <p>To begin, input an ingredient with dietary or allergen restriction to find recipes for everyone to enjoy! </p>
+          <p class="center-align">Please <a href="/signup"><strong>Sign up</strong></a> or <a href="/login"><strong>Login</strong></a> to save recipes.</p>
+
+          <p class="center-align"><strong>Non-members only have view access.</strong></p>
+          
+        
+      </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="close" class="modal-close waves-effect waves-green btn blue-grey lighten-2 right-align">Close</a>
+    </div>
+  </div>
+
+  <!--About Us Modal Structure -->
   <div id="aboutModal" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h5>ABOUT US</h5>
@@ -201,6 +221,12 @@
   var isLogged=false;
   var isSaved=false;
   var isDelete=false;
+
+  //enable modals to run
+  $('.modal-trigger').leanModal();
+  $("#welcomeModal").openModal();
+
+
   </script>
   <script src="js/nav.js"></script>
   <script src="js/jeeves.js"></script>

@@ -1,6 +1,7 @@
 //sets default values for isSaved and isDelete
 var isSaved=false;
 var isDelete=false;
+var isLogged=false;
 
 // call function when submit button is pressed
  var submitReq = function(event)
@@ -25,6 +26,7 @@ var isDelete=false;
 
   //once search complete clear search for next search
   clearSearch();
+ 
   //calls myCards to get 12 recipes to Object
    makeCards(myURL,recipeSource );
 };
@@ -209,6 +211,14 @@ $("input").keypress(function()
 });
 
 $('#inputBtn').click(submitReq);
+
+//if the user is not logged in run a recipe search for default
+if(!isLogged)
+{
+
+   makeCards("https://api.yummly.com/v1/api/recipes?_app_id=87e47442&_app_key=11e4aadcc3dddb10fa26ae2968e1ce03&q=tacos&maxResult=15","https://api.yummly.com/v1/api/recipes" );
+
+}
 
 //top button
 $(".fixed-action-btn").click(function()

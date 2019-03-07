@@ -102,6 +102,10 @@ $(document).ready(function()
     });
 
   });
+  if(!isLogged)
+  {
+    $("#outputArea").append("Please Login to save recipes");
+  }
   //enable modals to run
   $('.modal-trigger').leanModal();
 
