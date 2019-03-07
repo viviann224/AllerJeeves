@@ -21,6 +21,7 @@ $(document).ready(function()
   // //when user clicks on about, open the about modal
    $("#about").click(function()
    {  $("#aboutModal").openModal();});
+   
    // //when user clicks login close current modal then open login modal
     $("#close").click(function()
     { $(".lean-overlay").hide();});

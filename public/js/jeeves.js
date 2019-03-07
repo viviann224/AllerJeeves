@@ -235,6 +235,7 @@ $(".loginInBtn").click(function()
 
 });
 
+
 $(".logOutBtn").click(function()
 {
   // prevent page refresh when submit is pressed
