@@ -42,7 +42,7 @@ function getCards(ingr, allergy, diet, source, id, key)
 {
   var userInput= ingr;
   var myURL = source+"?q="+ userInput+"&app_id=" + id +"&app_key="+ key+ allergy + diet +"&to=12" ;
-  console.log(myURL)
+
   return myURL;
 }
 
@@ -53,13 +53,14 @@ function makeCards(url, recipeSource)
   $(".outputArea").empty();
   //calling the ajax class to pass the url, and the
   //GET method to return the myObj object
-  console.log(url)
+
     $.ajax({
       url: url,
       method: "GET"
       //once myObj object returns, pass in myObj to the next function
     }).then(function(myObj)
     {
+      
       // if(err)
       // {
       //   console.log("error");
@@ -120,6 +121,7 @@ function makeCards(url, recipeSource)
 
         if(Cards.url.length>0)
         { createCards(Cards);}
+
       }
       else
       {
