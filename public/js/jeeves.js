@@ -126,9 +126,10 @@ function makeCards(url, recipeSource)
         //appends the card to html
         $(".outputArea").append("<p><h3>I am sorry we cannot find your search in our database. Please search again</h3></p>");
       }
-    }).catch(function(err) {
-     $(".outputArea").append("<p><h3>I am sorry we cannot find your search in our database. Please search again</h3></p>");
-    });
+    })
+    // .catch(function(err) {
+    //  $(".outputArea").append("<p><h3>I am sorry we cannot find your search in our database. Please search again</h3></p>");
+    // });
 }
 
 function createCards(Cards)
