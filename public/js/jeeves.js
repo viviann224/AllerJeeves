@@ -11,10 +11,10 @@ var isLogged=false;
   isSaved=true;
   isDelete=false;
   // website url for ajax to pull from
-  const recipeSource = "https://api.yummly.com/v1/api/recipes";
+  const recipeSource = "https://api.edamam.com/search";
   //api id and key
-  const appId="87e47442";
-  const appKey="11e4aadcc3dddb10fa26ae2968e1ce03"
+  const appId="c2f36394";
+  const appKey="be02844898830fb6498ff5c8b9928065";
   //calls getDiet to get dietary restrictions
   var myIngr= getIngre().trim();
   //calls getDiet to get dietary restrictions
@@ -26,7 +26,7 @@ var isLogged=false;
 
   //once search complete clear search for next search
   clearSearch();
- 
+
   //calls myCards to get 12 recipes to Object
    makeCards(myURL,recipeSource );
 };
@@ -40,8 +40,9 @@ function clearSearch()
 //function to create url for ajax request
 function getCards(ingr, allergy, diet, source, id, key)
 {
-  var userInput= ingr+allergy+diet;
-  var myURL = source+"?_app_id="+ id+"&_app_key="+ key+"&q=" + userInput +"&maxResult=15";
+  var userInput= ingr;
+  var myURL = source+"?q="+ userInput+"&app_id=" + id +"&app_key="+ key+ allergy + diet +"&to=12" ;
+  console.log(myURL)
   return myURL;
 }
 
@@ -52,46 +53,60 @@ function makeCards(url, recipeSource)
   $(".outputArea").empty();
   //calling the ajax class to pass the url, and the
   //GET method to return the myObj object
+  console.log(url)
     $.ajax({
       url: url,
       method: "GET"
       //once myObj object returns, pass in myObj to the next function
     }).then(function(myObj)
     {
-      let newObj = myObj.matches;
+      // if(err)
+      // {
+      //   console.log("error");
+      // }
+      //console.log(err);
+      // console.log(myObj.hits[0])
+      // console.log(myObj.hits[0].recipe)
+      // console.log(myObj.hits[0].recipe.url)
+      // console.log(myObj.hits[0].recipe.uri.split('recipe_')[1])
+      // console.log(myObj.hits[0].recipe.image)
+      // console.log(myObj.hits[0].recipe.label)
+      // console.log(myObj.hits[0].recipe.ingredientLines)
+      let newObj = myObj.hits;
       // set the count value to the count property in the object
       let count = newObj.length;
-
-      if(count>0)
+      console.log(newObj);
+      if(newObj.length)
       {
         let recipeArray=[], idArray=[], imageArray=[], ingredArray=[], titleArray=[], recIdArr=[];
 
-        let yummlySource="https://www.yummly.com/recipe/";
+        let yummlySource="https://www.edamam.com/recipe";
 
         // initiate a for loop to store recipe_id property and image_url property into their arrays
         //change to count later..
         for (var i = 0; i < count; i++)
         {
-          recipeArray.push(yummlySource + newObj[i].id);
-          idArray.push(newObj[i].id);
-          imageArray.push(newObj[i].imageUrlsBySize[90]);
-          recIdArr.push(newObj[i].id)
-
+          recipeArray.push(newObj[i].recipe.shareAs);
+          idArray.push(newObj[i].recipe.uri.split('recipe_')[1]);
+          imageArray.push(newObj[i].recipe.image);
+          recIdArr.push(newObj[i].recipe.label)
+          //console.log(newObj[i].recipe.ingredientLines);
           //for loop for specific formatting for specific ingredient
-          for(var x=0;x<newObj[i].ingredients.length;x++)
+          for(var x=0;x<newObj[i].recipe.ingredientLines.length;x++)
           {
-            newObj[i].ingredients[x]=" "+newObj[i].ingredients[x];
+            newObj[i].recipe.ingredientLines[x]=" "+newObj[i].recipe.ingredientLines[x];
           }
-          ingredArray.push(newObj[i].ingredients);
-          titleArray.push(newObj[i].recipeName);
+          //console.log(newObj[i].recipe.ingredientLines)
+          ingredArray.push(newObj[i].recipe.ingredientLines);
+          titleArray.push(newObj[i].recipe.label);
         }
 
         // create a for-loop to pull, resize, and reassign photos back into the imageArray followed by another interation to replace all http with https...so they all match through out page.
-        for (var j = 0; j < imageArray.length; j++)
-        {
-            imageArray[j] = imageArray[j].toString().replace("s90", "s500");
-            imageArray[j] = imageArray[j].toString().replace("http://", "https://");
-        }
+        // for (var j = 0; j < imageArray.length; j++)
+        // {
+        //     imageArray[j] = imageArray[j].toString().replace("s90", "s500");
+        //     imageArray[j] = imageArray[j].toString().replace("http://", "https://");
+        // }
 
         var Cards =
         {
@@ -111,6 +126,8 @@ function makeCards(url, recipeSource)
         //appends the card to html
         $(".outputArea").append("<p><h3>I am sorry we cannot find your search in our database. Please search again</h3></p>");
       }
+    }).catch(function(err) {
+     $(".outputArea").append("<p><h3>I am sorry we cannot find your search in our database. Please search again</h3></p>");
     });
 }
 
@@ -165,7 +182,7 @@ function createCards(Cards)
 function getIngre()
 {
   //ingredient input is default to tofu unless user updates.
-  var ingr="Tofu";
+  var ingr="Tacos";
   if($("#input_text").val().trim().length>0)
   { ingr= $("#input_text").val().trim();}
   return ingr;
@@ -175,7 +192,7 @@ function getIngre()
 function getDiet()
 {
   //starting format for concatination for diret restrictions
-  var dietString = "&allowedDiet[]=";
+  var dietString = "&health=";
   var dietRequest="";
   //this is to create the filter for the specific diet
   $("input[class=diet]:checked").each(function() {
@@ -191,7 +208,7 @@ function getDiet()
 function getAllergy()
 {
   //starting format for concatination for allergy restrictions
-  var restrictString = "&allowedAllergy[]=";
+  var restrictString = "&health=";
   var allergyRequest="";
   //this is to create the filter for the specific allergy
   $("input[class=allergy]:checked").each(function() {
@@ -216,7 +233,7 @@ $('#inputBtn').click(submitReq);
 if(!isLogged)
 {
 
-   makeCards("https://api.yummly.com/v1/api/recipes?_app_id=87e47442&_app_key=11e4aadcc3dddb10fa26ae2968e1ce03&q=tacos&maxResult=15","https://api.yummly.com/v1/api/recipes" );
+   makeCards("https://api.edamam.com/search?q=cookie&app_id=c2f36394&app_key=be02844898830fb6498ff5c8b9928065&to=12","https://www.edamam.com/recipe" );
 
 }
 

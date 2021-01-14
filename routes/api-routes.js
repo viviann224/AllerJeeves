@@ -4,6 +4,30 @@ var passport = require("../config/passport");
 
 module.exports = function(app)
 {
+  // &health=
+  //dairy-free
+  //gluten-free
+  //peanut-free
+  //soy-free
+  //egg-free
+  //shellfish-free
+  //tree-nut-free
+
+  //vegetarian
+  //vegan
+  //pecatarian
+  //paleo
+
+
+  //base url= https://api.edamam.com
+  //getrequest= https://api.edamam.com/search
+  //200 = sucess
+  //404 = fail
+  //“health=peanut-free&health=tree-nut-free”
+
+  //example: https://api.edamam.com/search?q=chicken&app_id=$c2f36394&app_key=$be02844898830fb6498ff5c8b9928065&health=alcohol-free
+  
+  //https://api.edamam.com/search&app_id=$c2f36394&app_key=$be02844898830fb6498ff5c8b9928065&?q=chicken
   // Using the passport.authenticate middleware with our local strategy.
   // If the user logged in, send them to the members page.
   // else user will stay on nonmembers page
